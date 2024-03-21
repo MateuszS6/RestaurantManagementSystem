@@ -1,21 +1,26 @@
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class LoginPage implements ActionListener, FocusListener {
+public class LoginPage implements ActionListener, FocusListener, DocumentListener {
     private JPanel mainPanel;
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton clearButton;
     private JButton loginButton;
-    private final Color defaultTextColour = new Color(0x9B9B9B);
+    private final Color defaultTextColour = new Color(0xFF777777, true);
 
     public LoginPage() {
         usernameField.addFocusListener(this);
         passwordField.addFocusListener(this);
+
+        usernameField.getDocument().addDocumentListener(this);
+        passwordField.getDocument().addDocumentListener(this);
 
         loginButton.addActionListener(this);
         clearButton.addActionListener(this);
@@ -23,6 +28,17 @@ public class LoginPage implements ActionListener, FocusListener {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public void updateButtonState() {
+        if (!usernameField.getText().isEmpty() && usernameField.getForeground() == Color.BLACK
+                || !passwordField.getText().isEmpty() && passwordField.getForeground() == Color.BLACK) {
+            clearButton.setEnabled(true);
+            loginButton.setEnabled(true);
+        } else {
+            clearButton.setEnabled(false);
+            loginButton.setEnabled(false);
+        }
     }
 
     @Override
@@ -57,5 +73,20 @@ public class LoginPage implements ActionListener, FocusListener {
             passwordField.setForeground(defaultTextColour);
             passwordField.setText("Password");
         }
+    }
+
+    @Override
+    public void insertUpdate(DocumentEvent e) {
+        updateButtonState();
+    }
+
+    @Override
+    public void removeUpdate(DocumentEvent e) {
+        updateButtonState();
+    }
+
+    @Override
+    public void changedUpdate(DocumentEvent e) {
+        updateButtonState();
     }
 }

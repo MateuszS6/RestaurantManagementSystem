@@ -129,7 +129,7 @@
         </constraints>
         <properties>
           <font name="Consolas"/>
-          <foreground color="-13946058"/>
+          <foreground color="-16777216"/>
           <text value="Powered by Culinary Commanders"/>
         </properties>
       </component>

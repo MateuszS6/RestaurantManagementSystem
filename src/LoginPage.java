@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.Arrays;
 
 public class LoginPage implements ActionListener, FocusListener, DocumentListener {
     private JPanel mainPanel;
@@ -47,7 +48,13 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
             usernameField.setText("");
             passwordField.setText("");
         } else if (e.getSource() == loginButton) {
-            System.out.println("Login");
+            String username = usernameField.getText();
+            String password = Arrays.toString(passwordField.getPassword());
+            if (username.equals("mateusz") && password.equals("[m, a, t, z]")) {
+                System.out.println("Login successful");
+            } else {
+                System.out.println("Login unsuccessful");
+            }
         }
     }
 

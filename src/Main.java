@@ -4,15 +4,16 @@ import java.awt.*;
 public class Main {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 560;
+    private JFrame window;
     private JPanel panel;
 
     public Main() {
         // Window setup
-        JFrame window = new JFrame("Lancaster's Restaurant Management");
+        window = new JFrame("Lancaster's Restaurant Management");
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setVisible(true);
-        panel = new LoginPage().getMainPanel();
+        panel = new LoginPage(this).getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         window.add(panel);
         window.pack();
@@ -21,5 +22,13 @@ public class Main {
 
     public static void main(String[] args) {
         new Main();
+    }
+
+    public void switchPanel(JPanel newPanel) {
+        window.remove(panel);
+        panel = newPanel;
+        panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        window.add(panel);
+        window.pack();
     }
 }

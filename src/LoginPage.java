@@ -9,6 +9,7 @@ import java.awt.event.FocusListener;
 import java.util.Arrays;
 
 public class LoginPage implements ActionListener, FocusListener, DocumentListener {
+    private Main main;
     private JPanel mainPanel;
     private JTextField usernameField;
     private JPasswordField passwordField;
@@ -16,7 +17,9 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
     private JButton loginButton;
     private final Color defaultTextColour = new Color(0xFF777777, true);
 
-    public LoginPage() {
+    public LoginPage(Main main) {
+        this.main = main;
+
         usernameField.addFocusListener(this);
         passwordField.addFocusListener(this);
 
@@ -52,6 +55,7 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
             String password = Arrays.toString(passwordField.getPassword());
             if (username.equals("mateusz") && password.equals("[m, a, t, z]")) {
                 System.out.println("Login successful");
+                main.switchPanel(new HomePage().getMainPanel());
             } else {
                 System.out.println("Login unsuccessful");
             }

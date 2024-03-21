@@ -3,14 +3,14 @@
   <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="702" height="556"/>
+      <xy x="20" y="20" width="702" height="618"/>
     </constraints>
     <properties>
       <background color="-12828863"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="600c2" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="600c2" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="30" left="30" bottom="30" right="30"/>
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -29,7 +29,7 @@
               <foreground color="-4144960"/>
               <horizontalTextPosition value="0"/>
               <icon value="restaurant-logo.jpeg"/>
-              <text value="Log in to your account"/>
+              <text value="Sign in to your account"/>
               <verticalTextPosition value="3"/>
             </properties>
           </component>
@@ -46,21 +46,6 @@
               <name value="Username"/>
               <selectedTextColor color="-23296"/>
               <text value="Username"/>
-            </properties>
-          </component>
-          <component id="86579" class="javax.swing.JPasswordField" binding="passwordField">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-4144960"/>
-              <font size="20"/>
-              <foreground color="-6579301"/>
-              <name value="Password"/>
-              <requestFocusEnabled value="true"/>
-              <text value="Password"/>
             </properties>
           </component>
           <grid id="e643e" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -94,13 +79,36 @@
                 </constraints>
                 <properties>
                   <enabled value="false"/>
-                  <focusable value="false"/>
                   <font size="20"/>
-                  <text value="Log in"/>
+                  <text value="Sign in"/>
                 </properties>
               </component>
             </children>
           </grid>
+          <component id="1d919" class="javax.swing.JLabel" binding="error">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-3309774"/>
+              <text value=" "/>
+            </properties>
+          </component>
+          <component id="b6f42" class="javax.swing.JPasswordField" binding="passwordField">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-4144960"/>
+              <font name="Monospaced" size="20"/>
+              <foreground color="-6579301"/>
+              <name value="Username"/>
+              <selectedTextColor color="-23296"/>
+              <text value="Password"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <hspacer id="61440">

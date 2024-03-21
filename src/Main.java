@@ -8,11 +8,11 @@ public class Main {
 
     public Main() {
         // Window setup
-        JFrame window = new JFrame("Restaurant Management");
+        JFrame window = new JFrame("Lancaster's Restaurant Management");
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setVisible(true);
-        panel = new HomePage().getMainPanel();
+        panel = new LoginPage().getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         window.add(panel);
         window.pack();

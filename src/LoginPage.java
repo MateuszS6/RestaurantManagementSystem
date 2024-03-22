@@ -18,11 +18,14 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
     private JButton clearButton;
     private JButton loginButton;
     private JLabel error;
+    private JLabel poweredBy;
 
     public LoginPage(Main main) {
         this.main = main;
         echoChar = passwordField.getEchoChar();
         passwordField.setEchoChar((char) 0);
+        poweredBy.setIcon(new ImageIcon(new ImageIcon("images/team-icon.png")
+                .getImage().getScaledInstance(-1, 30, Image.SCALE_SMOOTH)));
 
         // To display default text hint in fields when empty
         usernameField.addFocusListener(this);

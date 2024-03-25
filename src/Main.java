@@ -14,7 +14,7 @@ public class Main {
         window.setResizable(false);
         window.setVisible(true);
 //        panel = new LoginPage(this).getMainPanel();
-        panel = new MainInterface().getMainPanel();
+        panel = new MainInterface(this).getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         window.add(panel);
         window.pack();
@@ -31,5 +31,10 @@ public class Main {
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         window.add(panel);
         window.pack();
+    }
+
+    public void MySetIcon(JLabel label, String filename, int width, int height) {
+        label.setIcon(new ImageIcon(new ImageIcon(filename).getImage()
+                .getScaledInstance(width, height, Image.SCALE_SMOOTH)));
     }
 }

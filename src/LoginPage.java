@@ -24,8 +24,7 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
         this.main = main;
         echoChar = passwordField.getEchoChar();
         passwordField.setEchoChar((char) 0);
-        poweredBy.setIcon(new ImageIcon(new ImageIcon("images/team-icon.png")
-                .getImage().getScaledInstance(-1, 30, Image.SCALE_SMOOTH)));
+        this.main.MySetIcon(poweredBy, "images/team-icon.png", -1, 30);
 
         // To display default text hint in fields when empty
         usernameField.addFocusListener(this);
@@ -69,7 +68,7 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
             String username = usernameField.getText();
             String password = Arrays.toString(passwordField.getPassword());
             if (username.equals("mateusz") && password.equals("[m, a, t, z]")) {
-                main.switchPanel(new MainInterface().getMainPanel());
+                main.switchPanel(new MainInterface(main).getMainPanel());
 //                System.out.println("Login successful");
             } else {
                 error.setText("Incorrect username or password.");

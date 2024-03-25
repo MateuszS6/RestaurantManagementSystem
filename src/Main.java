@@ -13,7 +13,8 @@ public class Main {
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setVisible(true);
-        panel = new LoginPage(this).getMainPanel();
+//        panel = new LoginPage(this).getMainPanel();
+        panel = new MainInterface().getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         window.add(panel);
         window.pack();

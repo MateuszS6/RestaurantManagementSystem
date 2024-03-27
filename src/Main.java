@@ -14,7 +14,7 @@ public class Main {
         window.setResizable(false);
         window.setVisible(true);
 //        panel = new LoginPage(this).getMainPanel();
-        panel = new MainInterface(this).getMainPanel();
+        panel = new MainInterface(this, "DEV").getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         window.add(panel);
         window.pack();

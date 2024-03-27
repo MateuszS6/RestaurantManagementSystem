@@ -67,13 +67,9 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
         } else if (e.getSource() == loginButton) {
             String username = usernameField.getText();
             String password = Arrays.toString(passwordField.getPassword());
-            if (username.equals("mateusz") && password.equals("[m, a, t, z]")) {
-                main.switchPanel(new MainInterface(main).getMainPanel());
-//                System.out.println("Login successful");
-            } else {
-                error.setText("Incorrect username or password.");
-//                System.out.println("Login unsuccessful");
-            }
+            if (username.equals("mateusz") && password.equals("[m, a, t, z]"))
+                main.switchPanel(new MainInterface(main, username).getMainPanel());
+            else error.setText("Incorrect username or password.");
         }
     }
 

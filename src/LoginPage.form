@@ -24,7 +24,7 @@
         <children>
           <component id="ebb95" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <font name="Bodoni MT" size="26"/>
@@ -67,9 +67,14 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <background color="-12695991"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
                   <enabled value="false"/>
                   <focusable value="false"/>
-                  <font size="20"/>
+                  <font name="Arial Black" size="20"/>
+                  <foreground color="-1"/>
+                  <selected value="false"/>
                   <text value="Clear"/>
                 </properties>
               </component>
@@ -80,8 +85,11 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <background color="-12695991"/>
+                  <borderPainted value="false"/>
                   <enabled value="false"/>
-                  <font size="20"/>
+                  <font name="Arial Black" size="20"/>
+                  <foreground color="-1"/>
                   <text value="Sign in"/>
                 </properties>
               </component>

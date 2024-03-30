@@ -17,14 +17,14 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
     private JPasswordField passwordField;
     private JButton clearButton;
     private JButton loginButton;
-    private JLabel error;
-    private JLabel poweredBy;
+    private JLabel errorLabel;
+    private JLabel poweredByLabel;
 
     public LoginPage(Main main) {
         this.main = main;
         echoChar = passwordField.getEchoChar();
         passwordField.setEchoChar((char) 0);
-        this.main.MySetIcon(poweredBy, "images/team-icon.png", -1, 30);
+        this.main.MySetIcon(poweredByLabel, "images/team-icon.png", -1, 30);
 
         // To display default text hint in fields when empty
         usernameField.addFocusListener(this);
@@ -63,13 +63,13 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
             passwordField.setEchoChar((char) 0);
             passwordField.setText("Password");
             mainPanel.requestFocus();
-            error.setText(" ");
+            errorLabel.setText(" ");
         } else if (e.getSource() == loginButton) {
             String username = usernameField.getText();
             String password = Arrays.toString(passwordField.getPassword());
-            if (username.equals("mateusz") && password.equals("[m, a, t, z]"))
+            if (username.equals("Mateusz") && password.equals("[m, a, t, z]"))
                 main.switchPanel(new MainInterface(main, username).getMainPanel());
-            else error.setText("Incorrect username or password.");
+            else errorLabel.setText("Incorrect username or password.");
         }
     }
 

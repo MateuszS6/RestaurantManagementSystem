@@ -16,15 +16,15 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton clearButton;
-    private JButton loginButton;
+    private JButton signInButton;
     private JLabel errorLabel;
     private JLabel poweredByLabel;
 
-    public LoginPage(Main main) {
-        this.main = main;
+    public LoginPage(Main m) {
+        main = m;
         echoChar = passwordField.getEchoChar();
         passwordField.setEchoChar((char) 0);
-        this.main.MySetIcon(poweredByLabel, "images/team-icon.png", -1, 30);
+        main.addIcon(poweredByLabel, "team-icon.png", -1, 30);
 
         // To display default text hint in fields when empty
         usernameField.addFocusListener(this);
@@ -35,7 +35,7 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
         passwordField.getDocument().addDocumentListener(this);
 
         // To clear the fields or attempt log in
-        loginButton.addActionListener(this);
+        signInButton.addActionListener(this);
         clearButton.addActionListener(this);
     }
 
@@ -47,10 +47,10 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
         if (!usernameField.getText().isEmpty() && usernameField.getForeground() == Color.BLACK
                 || !passwordField.getText().isEmpty() && passwordField.getForeground() == Color.BLACK) {
             clearButton.setEnabled(true);
-            loginButton.setEnabled(true);
+            signInButton.setEnabled(true);
         } else {
             clearButton.setEnabled(false);
-            loginButton.setEnabled(false);
+            signInButton.setEnabled(false);
         }
     }
 
@@ -64,12 +64,12 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
             passwordField.setText("Password");
             mainPanel.requestFocus();
             errorLabel.setText(" ");
-        } else if (e.getSource() == loginButton) {
+        } else if (e.getSource() == signInButton) {
             String username = usernameField.getText();
             String password = Arrays.toString(passwordField.getPassword());
-            if (username.equals("Mateusz") && password.equals("[m, a, t, z]"))
-                main.switchPanel(new MainInterface(main, username).getMainPanel());
-            else errorLabel.setText("Incorrect username or password.");
+            if (!username.equals("Mateusz") && !password.equals("[m, a, t, z]"))
+                errorLabel.setText("Incorrect username or password.");
+            else main.switchPanel(new MainInterface(main, username).getMainPanel());
         }
     }
 

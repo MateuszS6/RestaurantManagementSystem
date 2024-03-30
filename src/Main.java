@@ -1,24 +1,26 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
-public class Main {
+public class Main extends JFrame {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 560;
-    private JFrame window;
     private JPanel panel;
 
     public Main() {
         // Window setup
-        window = new JFrame("Lancaster's Restaurant Management");
-        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        window.setResizable(false);
-        window.setVisible(true);
+        setTitle("Lancaster's Restaurant Management");
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setVisible(true);
+
 //        panel = new LoginPage(this).getMainPanel();
         panel = new MainInterface(this, "DEV").getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        window.add(panel);
-        window.pack();
-        window.setLocationRelativeTo(null); // Centre on panel
+
+        add(panel);
+        pack();
+        setLocationRelativeTo(null); // Centre on screen
     }
 
     public static void main(String[] args) {
@@ -26,15 +28,15 @@ public class Main {
     }
 
     public void switchPanel(JPanel newPanel) {
-        window.remove(panel);
+        remove(panel);
         panel = newPanel;
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        window.add(panel);
-        window.pack();
+        add(panel);
+        pack();
     }
 
-    public void MySetIcon(JLabel label, String filename, int width, int height) {
-        label.setIcon(new ImageIcon(new ImageIcon(filename).getImage()
-                .getScaledInstance(width, height, Image.SCALE_SMOOTH)));
+    public void addIcon(JLabel label, String filename, int width, int height) {
+        label.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource('/' + filename)))
+                .getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH)));
     }
 }

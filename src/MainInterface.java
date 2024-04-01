@@ -19,13 +19,14 @@ public class MainInterface implements ActionListener {
     private JButton orderButton;
     private JButton tablesButton;
     private JLabel poweredByLabel;
-    private JLabel test;
+    private JLabel titleLabel;
 
     public MainInterface(Main m, String user) {
         main = m;
         welcomeLabel.setText("Welcome, " + user + '!');
         main.addIcon(logoLabel, "restaurant-logo.jpeg", -1, 150);
         main.addIcon(poweredByLabel, "team-icon.png", -1, 30);
+        titleLabel.setText("Dashboard");
 
         // Buttons
         signOutButton.addActionListener(this);
@@ -54,13 +55,13 @@ public class MainInterface implements ActionListener {
         if (e.getSource() == signOutButton) {
             main.switchPanel(new LoginPage(main).getMainPanel());
         } else if (e.getSource() == dashboardButton) {
-            test.setText("Dashboard");
+            titleLabel.setText("Dashboard");
         } else if (e.getSource() == orderButton) {
-            test.setText("Order");
+            titleLabel.setText("Order");
         } else if (e.getSource() == menuButton) {
-            test.setText("Menu");
+            titleLabel.setText("Menu");
         } else if (e.getSource() == tablesButton) {
-            test.setText("Tables");
+            titleLabel.setText("Tables");
         }
     }
 }

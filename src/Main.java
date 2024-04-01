@@ -14,8 +14,8 @@ public class Main extends JFrame {
         setResizable(false);
         setVisible(true);
 
-//        panel = new LoginPage(this).getMainPanel();
-        panel = new MainInterface(this, "DEV").getMainPanel();
+        panel = new LoginPage(this).getMainPanel();
+//        panel = new MainInterface(this, "DEV").getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
         add(panel);

@@ -13,16 +13,18 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
     private final Main main;
     private final char echoChar;
     private JPanel mainPanel;
+    private JLabel errorLabel;
+    private JLabel poweredByLabel;
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton clearButton;
     private JButton signInButton;
-    private JLabel errorLabel;
-    private JLabel poweredByLabel;
 
     public LoginPage(Main m) {
         main = m;
         echoChar = passwordField.getEchoChar();
+        errorLabel.setText("");
+        poweredByLabel.setText("");
         passwordField.setEchoChar((char) 0);
         main.addIcon(poweredByLabel, "team-icon.png", -1, 30);
 

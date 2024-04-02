@@ -11,22 +11,25 @@ public class MainInterface implements ActionListener {
     private JPanel topPanel;
     private JPanel contentPanel;
     private JLabel welcomeLabel;
-    private JButton signOutButton;
     private JLabel timeLabel;
     private JLabel logoLabel;
+    private JLabel poweredByLabel;
+    private JLabel contentLabel;
+    private JButton signOutButton;
     private JButton dashboardButton;
     private JButton menuButton;
     private JButton orderButton;
     private JButton tablesButton;
-    private JLabel poweredByLabel;
-    private JLabel titleLabel;
+    private JButton employeesButton;
 
     public MainInterface(Main m, String user) {
         main = m;
         welcomeLabel.setText("Welcome, " + user + '!');
+        logoLabel.setText("");
+        poweredByLabel.setText("");
         main.addIcon(logoLabel, "restaurant-logo.jpeg", -1, 150);
         main.addIcon(poweredByLabel, "team-icon.png", -1, 30);
-        titleLabel.setText("Dashboard");
+        contentLabel.setText("Dashboard");
 
         // Buttons
         signOutButton.addActionListener(this);
@@ -34,6 +37,7 @@ public class MainInterface implements ActionListener {
         orderButton.addActionListener(this);
         menuButton.addActionListener(this);
         tablesButton.addActionListener(this);
+        employeesButton.addActionListener(this);
 
         updateTime();
         Timer timer = new Timer(60000, e -> updateTime());
@@ -55,13 +59,15 @@ public class MainInterface implements ActionListener {
         if (e.getSource() == signOutButton) {
             main.switchPanel(new LoginPage(main).getMainPanel());
         } else if (e.getSource() == dashboardButton) {
-            titleLabel.setText("Dashboard");
+            contentLabel.setText("Dashboard");
         } else if (e.getSource() == orderButton) {
-            titleLabel.setText("Order");
+            contentLabel.setText("Order");
         } else if (e.getSource() == menuButton) {
-            titleLabel.setText("Menu");
+            contentLabel.setText("Menu");
         } else if (e.getSource() == tablesButton) {
-            titleLabel.setText("Tables");
+            contentLabel.setText("Tables");
+        } else if (e.getSource() == employeesButton) {
+            contentLabel.setText("Employees");
         }
     }
 }

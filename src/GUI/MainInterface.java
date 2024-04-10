@@ -1,5 +1,7 @@
 package GUI;
 
+import JDBC.DBConnection;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,6 +10,7 @@ import java.util.Calendar;
 
 public class MainInterface implements MyPanel, ActionListener {
     private final Main main;
+    private final DBConnection connection;
     private JPanel mainPanel;
     private JPanel contentPanel;
     private JLabel welcomeLabel;
@@ -23,11 +26,12 @@ public class MainInterface implements MyPanel, ActionListener {
 
     public MainInterface(Main m, String user) {
         main = m;
+        connection = new DBConnection();
         welcomeLabel.setText("Welcome, " + user + '!');
         main.addLabelIcon(logoLabel, "restaurant-logo.jpeg", -1, 150);
         main.addLabelIcon(poweredByLabel, "team-icon.png", -1, 30);
 
-        contentPanel = new MenuPanel().getMainPanel();
+        contentPanel = new MenuPanel(connection).getMainPanel();
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
         // Buttons
@@ -65,7 +69,7 @@ public class MainInterface implements MyPanel, ActionListener {
         if (e.getSource() == signOutButton) main.switchPanel(new LoginPage(main));
         else if (e.getSource() == dashboardButton) switchContentPanel(new TestPanel());
         else if (e.getSource() == orderButton) switchContentPanel(new TestPanel());
-        else if (e.getSource() == menuButton) switchContentPanel(new MenuPanel());
+        else if (e.getSource() == menuButton) switchContentPanel(new MenuPanel(connection));
         else if (e.getSource() == tablesButton) switchContentPanel(new TestPanel());
         else if (e.getSource() == employeesButton) switchContentPanel(new TestPanel());
     }

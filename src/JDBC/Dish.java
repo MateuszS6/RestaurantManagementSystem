@@ -57,7 +57,9 @@ public class Dish {
         this.allergenInfo = allergenInfo;
     }
 
-    // toString method to display MenuItem details
+    public String[] getInfo() {
+        return new String[]{String.valueOf(id), name, description, '£' + String.valueOf((int) price), null};
+    }
 
     public void print() {
         System.out.println("MenuItem{" +

@@ -38,7 +38,6 @@ public class Menu {
     }
 
     public void print() {
-        System.out.println("Menu");
         for (Dish dish : dishes) {
             System.out.println("ID: " + dish.getId());
             System.out.println("\tName: " + dish.getName());

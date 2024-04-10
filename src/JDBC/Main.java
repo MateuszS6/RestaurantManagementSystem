@@ -52,7 +52,7 @@ public class Main {
             boolean isMenuApproved = kitchen.getMenuApproval(menu,false);
             System.out.println("3: Is Menu Approved? " + isMenuApproved);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 }

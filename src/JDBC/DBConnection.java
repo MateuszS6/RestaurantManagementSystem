@@ -5,23 +5,30 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    static final String serverName = "smcse-stuproj00.city.ac.uk";
-    static final String portNumber = "3306";
-    static final String dbName = "in2033t06";
-    static final String userName = "in2033t06_a";
-    static final String password = "PS7gGioYXOM";
+    private Menu menu;
 
     public DBConnection() {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://" + serverName + ":" + portNumber + "/" + dbName, userName, password)) {
+        try (Connection connection = DriverManager.getConnection(
+                "jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2033t06",
+                "in2033t06_a",
+                "PS7gGioYXOM")) {
+
             FrontOfHouse frontOfHouse = new FrontOfHouse(connection);
-            Menu menu = frontOfHouse.getMenu();
-            menu.print();
+            menu = frontOfHouse.getMenu();
+
+//            Kitchen kitchen = new Kitchen(connection);
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println(e.getMessage());
         }
     }
 
     public static void main(String[] args) {
-        new DBConnection();
+        DBConnection test = new DBConnection();
+        test.getMenu().print();
+    }
+
+    public Menu getMenu() {
+        return menu;
     }
 }

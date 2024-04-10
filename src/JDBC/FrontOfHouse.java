@@ -17,7 +17,7 @@ public class FrontOfHouse implements IFrontOfHouse {
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
-            // builds menu
+            // Build menu
             Menu menu = new Menu();
             while (resultSet.next()) {
                 int menuItemID = resultSet.getInt("MenuItemID");
@@ -31,7 +31,7 @@ public class FrontOfHouse implements IFrontOfHouse {
             }
             return menu;
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             return null;
         }
     }

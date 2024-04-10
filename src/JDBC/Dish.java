@@ -59,14 +59,12 @@ public class Dish {
 
     // toString method to display MenuItem details
 
-    @Override
-    public String toString() {
-        return "MenuItem{" +
+    public void print() {
+        System.out.println("MenuItem{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", allergenInfo='" + allergenInfo + '\'' +
-                '}';
+                ", name=" + name + ", " +
+                "description=" + description + ", " +
+                "price=" + price + ", " +
+                "allergenInfo=" + allergenInfo + '}');
     }
 }

@@ -14,7 +14,7 @@ public class Main {
 
             if (menu != null) {
                 System.out.println("Menu:");
-                menu.printMenu();
+                menu.print();
             }
 
             // FOH

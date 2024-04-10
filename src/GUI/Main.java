@@ -8,6 +8,7 @@ import java.util.Objects;
 public class Main extends JFrame {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 560;
+    public static final Color PRIMARY_TEXT_COLOUR = new Color(0xFF777777, true);
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("EEEE HH:mm");
     private JPanel panel;
 
@@ -34,6 +35,7 @@ public class Main extends JFrame {
      * A custom method for adding an icon image to a JLabel with smooth scaling
      */
     public void addLabelIcon(JLabel label, String filename, int width, int height) {
+        label.setText("");
         label.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource('/' + filename)))
                 .getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH)));
     }
@@ -43,6 +45,6 @@ public class Main extends JFrame {
         panel = newPanel.getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         add(panel);
-        pack();
+        revalidate();
     }
 }

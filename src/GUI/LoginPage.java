@@ -11,7 +11,6 @@ import java.awt.event.FocusListener;
 import java.util.Arrays;
 
 public class LoginPage implements MyPanel, ActionListener, FocusListener, DocumentListener {
-    private final Color defaultTextColour = new Color(0xFF777777, true);
     private final Main main;
     private final char echoChar;
     private JPanel mainPanel;
@@ -26,7 +25,6 @@ public class LoginPage implements MyPanel, ActionListener, FocusListener, Docume
         main = m;
         echoChar = passwordField.getEchoChar();
         errorLabel.setText("");
-        poweredByLabel.setText("");
         passwordField.setEchoChar((char) 0);
         main.addLabelIcon(poweredByLabel, "team-icon.png", -1, 30);
 
@@ -43,10 +41,6 @@ public class LoginPage implements MyPanel, ActionListener, FocusListener, Docume
         clearButton.addActionListener(this);
     }
 
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-
     public void updateButtonState() {
         if (!usernameField.getText().isEmpty() && usernameField.getForeground() == Color.BLACK
                 || !passwordField.getText().isEmpty() && passwordField.getForeground() == Color.BLACK) {
@@ -59,11 +53,16 @@ public class LoginPage implements MyPanel, ActionListener, FocusListener, Docume
     }
 
     @Override
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == clearButton) {
-            usernameField.setForeground(defaultTextColour);
+            usernameField.setForeground(Main.PRIMARY_TEXT_COLOUR);
             usernameField.setText("Username");
-            passwordField.setForeground(defaultTextColour);
+            passwordField.setForeground(Main.PRIMARY_TEXT_COLOUR);
             passwordField.setEchoChar((char) 0);
             passwordField.setText("Password");
             mainPanel.requestFocus();
@@ -93,11 +92,11 @@ public class LoginPage implements MyPanel, ActionListener, FocusListener, Docume
     @Override
     public void focusLost(FocusEvent e) {
         if (e.getSource() == usernameField && usernameField.getText().isEmpty()) {
-            usernameField.setForeground(defaultTextColour);
+            usernameField.setForeground(Main.PRIMARY_TEXT_COLOUR);
             usernameField.setText("Username");
         }
         if (e.getSource() == passwordField && passwordField.getText().isEmpty()) {
-            passwordField.setForeground(defaultTextColour);
+            passwordField.setForeground(Main.PRIMARY_TEXT_COLOUR);
             passwordField.setEchoChar((char) 0);
             passwordField.setText("Password");
         }

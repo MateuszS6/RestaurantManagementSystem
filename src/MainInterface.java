@@ -1,15 +1,15 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class MainInterface implements ActionListener {
+public class MainInterface implements MyPanel, ActionListener {
     private Main main;
     private JPanel mainPanel;
     private JPanel sidePanel;
     private JPanel topPanel;
-    private JPanel contentPanel;
     private JLabel welcomeLabel;
     private JLabel timeLabel;
     private JLabel logoLabel;
@@ -21,6 +21,7 @@ public class MainInterface implements ActionListener {
     private JButton orderButton;
     private JButton tablesButton;
     private JButton employeesButton;
+    private JPanel contentPanel;
 
     public MainInterface(Main m, String user) {
         main = m;
@@ -54,12 +55,19 @@ public class MainInterface implements ActionListener {
         timeLabel.setText(time);
     }
 
+    public void switchContentPanel(JPanel newPanel) {
+        contentPanel.remove(contentPanel);
+        contentPanel.add(newPanel);
+        main.pack();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == signOutButton) {
-            main.switchPanel(new LoginPage(main).getMainPanel());
+            main.switchPanel(new LoginPage(main));
         } else if (e.getSource() == dashboardButton) {
             contentLabel.setText("Dashboard");
+//            switchContentPanel(new Dashboard());
         } else if (e.getSource() == orderButton) {
             contentLabel.setText("Order");
         } else if (e.getSource() == menuButton) {

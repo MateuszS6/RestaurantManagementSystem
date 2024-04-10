@@ -27,16 +27,19 @@ public class Main extends JFrame {
         new Main();
     }
 
-    public void switchPanel(JPanel newPanel) {
-        remove(panel);
-        panel = newPanel;
-        panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        add(panel);
-        pack();
-    }
-
+    /**
+     * A custom method for adding an icon image to a JLabel with smooth scaling
+     */
     public void addIcon(JLabel label, String filename, int width, int height) {
         label.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource('/' + filename)))
                 .getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH)));
+    }
+
+    public void switchPanel(MyPanel newPanel) {
+        remove(panel);
+        panel = newPanel.getMainPanel();
+        panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        add(panel);
+        pack();
     }
 }

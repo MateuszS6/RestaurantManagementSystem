@@ -8,7 +8,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.Arrays;
 
-public class LoginPage implements ActionListener, FocusListener, DocumentListener {
+public class LoginPage implements MyPanel, ActionListener, FocusListener, DocumentListener {
     private final Color defaultTextColour = new Color(0xFF777777, true);
     private final Main main;
     private final char echoChar;
@@ -71,7 +71,7 @@ public class LoginPage implements ActionListener, FocusListener, DocumentListene
             String password = Arrays.toString(passwordField.getPassword());
             if (!username.equals("Mateusz") && !password.equals("[m, a, t, z]"))
                 errorLabel.setText("Incorrect username or password.");
-            else main.switchPanel(new MainInterface(main, username).getMainPanel());
+            else main.switchPanel(new MainInterface(main, username));
         }
     }
 

@@ -1,3 +1,5 @@
+package GUI;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -26,7 +28,7 @@ public class LoginPage implements MyPanel, ActionListener, FocusListener, Docume
         errorLabel.setText("");
         poweredByLabel.setText("");
         passwordField.setEchoChar((char) 0);
-        main.addIcon(poweredByLabel, "team-icon.png", -1, 30);
+        main.addLabelIcon(poweredByLabel, "team-icon.png", -1, 30);
 
         // To display default text hint in fields when empty
         usernameField.addFocusListener(this);

@@ -1,10 +1,14 @@
+package GUI;
+
 import javax.swing.*;
 import java.awt.*;
+import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 public class Main extends JFrame {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 560;
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("EEEE HH:mm");
     private JPanel panel;
 
     public Main() {
@@ -15,9 +19,8 @@ public class Main extends JFrame {
         setVisible(true);
 
 //        panel = new LoginPage(this).getMainPanel();
-        panel = new MainInterface(this, "DEV").getMainPanel();
+        panel = new MainInterface(this, null).getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-
         add(panel);
         pack();
         setLocationRelativeTo(null); // Centre on screen
@@ -30,7 +33,7 @@ public class Main extends JFrame {
     /**
      * A custom method for adding an icon image to a JLabel with smooth scaling
      */
-    public void addIcon(JLabel label, String filename, int width, int height) {
+    public void addLabelIcon(JLabel label, String filename, int width, int height) {
         label.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource('/' + filename)))
                 .getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH)));
     }

@@ -1,8 +1,8 @@
+package GUI;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainInterface implements MyPanel, ActionListener {
@@ -28,8 +28,8 @@ public class MainInterface implements MyPanel, ActionListener {
         welcomeLabel.setText("Welcome, " + user + '!');
         logoLabel.setText("");
         poweredByLabel.setText("");
-        main.addIcon(logoLabel, "restaurant-logo.jpeg", -1, 150);
-        main.addIcon(poweredByLabel, "team-icon.png", -1, 30);
+        main.addLabelIcon(logoLabel, "restaurant-logo.jpeg", -1, 150);
+        main.addLabelIcon(poweredByLabel, "team-icon.png", -1, 30);
         contentLabel.setText("Dashboard");
 
         // Buttons
@@ -50,8 +50,7 @@ public class MainInterface implements MyPanel, ActionListener {
     }
 
     public void updateTime() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE HH:mm");
-        String time = dateFormat.format(Calendar.getInstance().getTime());
+        String time = Main.DATE_FORMAT.format(Calendar.getInstance().getTime());
         timeLabel.setText(time);
     }
 

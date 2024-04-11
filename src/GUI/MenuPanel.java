@@ -16,23 +16,23 @@ public class MenuPanel extends MyPanel implements ActionListener {
     private JButton removeButton;
 
     public MenuPanel(DBConnection connection) {
-        setTitle("Menu");
+        super("Menu", connection);
 
+        // Buttons
+        refreshButton.addActionListener(this);
+        addButton.addActionListener(this);
+        removeButton.addActionListener(this);
+    }
+
+    private void createUIComponents() {
         // Populate arrays with menu items
-        List<Dish> dishes = connection.getMenu().getDishes();
+        List<Dish> dishes = getConnection().getMenu().getDishes();
         String[] columns = {"ID", "Name", "Description", "Price", "Allergens"};
         String[][] data = new String[dishes.size()][columns.length];
         for (Dish dish : dishes) data[dish.getId() - 1] = dish.getInfo();
 
         // Menu table
         menuTable = new JTable(data, columns);
-        menuTable.setFillsViewportHeight(true);
-        mainPanel.add(new JScrollPane(menuTable));
-
-        // Buttons
-        refreshButton.addActionListener(this);
-        addButton.addActionListener(this);
-        removeButton.addActionListener(this);
     }
 
     @Override

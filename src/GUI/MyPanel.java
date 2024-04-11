@@ -1,9 +1,17 @@
 package GUI;
 
+import JDBC.DBConnection;
+
 import javax.swing.*;
 
 public abstract class MyPanel {
-    private String title;
+    private final String title;
+    private final DBConnection connection;
+
+    public MyPanel(String title, DBConnection connection) {
+        this.title = title;
+        this.connection = connection;
+    }
 
     public abstract JPanel getMainPanel();
 
@@ -11,7 +19,7 @@ public abstract class MyPanel {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public DBConnection getConnection() {
+        return connection;
     }
 }

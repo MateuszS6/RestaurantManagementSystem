@@ -14,8 +14,22 @@ public class TablesPanel extends MyPanel implements ActionListener {
     private JLabel infoLabel;
 
     public TablesPanel(DBConnection connection) {
-        setTitle("Tables");
+        super("Tables", connection);
 
+    }
+
+    private void createUIComponents() {
+        tablesPanel = new JPanel(new GridLayout(5, 3));
+        tables = new JButton[15];
+        for (int b = 0; b < tables.length; b++) {
+            tables[b] = new JButton("TABLE " + (b + 1));
+            tables[b].setFocusable(false);
+            tables[b].setBackground(new Color(0x01A2FF));
+            tables[b].setForeground(Color.WHITE);
+            tables[b].setFont(new Font("Arial Black", Font.PLAIN, 18));
+            tables[b].addActionListener(this);
+            tablesPanel.add(tables[b]);
+        }
     }
 
     @Override
@@ -29,16 +43,6 @@ public class TablesPanel extends MyPanel implements ActionListener {
             if (e.getSource() == table) {
                 infoLabel.setText(table.getText());
             }
-        }
-    }
-
-    private void createUIComponents() {
-        tablesPanel = new JPanel(new GridLayout(5, 3));
-        tables = new JButton[15];
-        for (int b = 0; b < tables.length; b++) {
-            tables[b] = new JButton("Table " + (b + 1));
-            tables[b].addActionListener(this);
-            tablesPanel.add(tables[b]);
         }
     }
 }

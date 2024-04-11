@@ -22,6 +22,7 @@ public class LoginPage extends MyPanel implements ActionListener, FocusListener,
     private JButton signInButton;
 
     public LoginPage(Main m) {
+        super(null, null);
         main = m;
         echoChar = passwordField.getEchoChar();
         errorLabel.setText("");

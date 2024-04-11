@@ -9,7 +9,6 @@ import java.util.Calendar;
 
 public class MainInterface extends MyPanel implements ActionListener {
     private final Main main;
-    private final DBConnection connection;
     private JPanel mainPanel;
     private JPanel contentPanel;
     private JLabel welcomeLabel;
@@ -25,13 +24,13 @@ public class MainInterface extends MyPanel implements ActionListener {
     private JLabel contentLabel;
 
     public MainInterface(Main m, String user) {
+        super(null, new DBConnection());
         main = m;
-        connection = new DBConnection();
         welcomeLabel.setText("Welcome, " + user + '!');
         main.addLabelIcon(logoLabel, "restaurant-logo.jpeg", -1, 150);
         main.addLabelIcon(poweredByLabel, "team-icon.png", -1, 30);
 
-        switchContentPanel(new TablesPanel(connection));
+        switchContentPanel(new MenuPanel(getConnection()));
 
         // Buttons
         signOutButton.addActionListener(this);
@@ -68,8 +67,8 @@ public class MainInterface extends MyPanel implements ActionListener {
         if (e.getSource() == signOutButton) main.switchPanel(new LoginPage(main));
 //        else if (e.getSource() == dashboardButton) switchContentPanel(new BasePanel());
 //        else if (e.getSource() == salesButton) switchContentPanel(new BasePanel());
-        else if (e.getSource() == menuButton) switchContentPanel(new MenuPanel(connection));
-        else if (e.getSource() == tablesButton) switchContentPanel(new TablesPanel(connection));
+        else if (e.getSource() == menuButton) switchContentPanel(new MenuPanel(getConnection()));
+        else if (e.getSource() == tablesButton) switchContentPanel(new TablesPanel(getConnection()));
 //        else if (e.getSource() == staffButton) switchContentPanel(new BasePanel());
     }
 }

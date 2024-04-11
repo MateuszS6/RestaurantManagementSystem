@@ -19,11 +19,8 @@ public class Main extends JFrame {
         setResizable(false);
         setVisible(true);
 
-//        panel = new LoginPage(this).getMainPanel();
-        panel = new MainInterface(this, null).getMainPanel();
-        panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        add(panel);
-        pack();
+//        switchPanel(new LoginPage(this));
+        switchPanel(new MainInterface(this, null));
         setLocationRelativeTo(null); // Centre on screen
     }
 
@@ -41,10 +38,10 @@ public class Main extends JFrame {
     }
 
     public void switchPanel(MyPanel newPanel) {
-        remove(panel);
+        if (panel != null) remove(panel);
         panel = newPanel.getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         add(panel);
-        revalidate();
+        pack();
     }
 }

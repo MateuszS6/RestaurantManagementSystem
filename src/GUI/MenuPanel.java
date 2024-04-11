@@ -19,14 +19,21 @@ public class MenuPanel extends MyPanel implements ActionListener {
     public MenuPanel(DBConnection connection) {
         setTitle("Menu");
 
+        // Populate arrays with menu items
         List<Dish> dishes = connection.getMenu().getDishes();
         String[] columns = {"ID", "Name", "Description", "Price", "Allergens"};
         String[][] data = new String[dishes.size()][columns.length];
         for (Dish dish : dishes) data[dish.getId() - 1] = dish.getInfo();
 
+        // Menu table
         menuTable = new JTable(data, columns);
         menuTable.setFillsViewportHeight(true);
         mainPanel.add(new JScrollPane(menuTable));
+
+        // Buttons
+        refreshButton.addActionListener(this);
+        addButton.addActionListener(this);
+        removeButton.addActionListener(this);
     }
 
     @Override
@@ -36,6 +43,12 @@ public class MenuPanel extends MyPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == refreshButton) {
+            System.out.println("Refresh Button pressed");
+        } else if (e.getSource() == addButton) {
+            System.out.println("Add Button pressed");
+        } else if (e.getSource() == removeButton) {
+            System.out.println("Remove Button pressed");
+        }
     }
 }

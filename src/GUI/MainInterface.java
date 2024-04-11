@@ -20,9 +20,10 @@ public class MainInterface extends MyPanel implements ActionListener {
     private JButton signOutButton;
     private JButton dashboardButton;
     private JButton menuButton;
-    private JButton orderButton;
+    private JButton bookingsButton;
     private JButton tablesButton;
     private JButton employeesButton;
+    private JLabel contentLabel;
 
     public MainInterface(Main m, String user) {
         main = m;
@@ -31,13 +32,12 @@ public class MainInterface extends MyPanel implements ActionListener {
         main.addLabelIcon(logoLabel, "restaurant-logo.jpeg", -1, 150);
         main.addLabelIcon(poweredByLabel, "team-icon.png", -1, 30);
 
-        contentPanel = new BasePanel(new MenuPanel(connection)).getMainPanel();
-        mainPanel.add(contentPanel, BorderLayout.CENTER);
+        switchContentPanel(new MenuPanel(connection));
 
         // Buttons
         signOutButton.addActionListener(this);
         dashboardButton.addActionListener(this);
-        orderButton.addActionListener(this);
+        bookingsButton.addActionListener(this);
         menuButton.addActionListener(this);
         tablesButton.addActionListener(this);
         employeesButton.addActionListener(this);
@@ -53,9 +53,9 @@ public class MainInterface extends MyPanel implements ActionListener {
     }
 
     public void switchContentPanel(MyPanel newPanel) {
-        mainPanel.remove(contentPanel);
-        contentPanel = newPanel.getMainPanel();
-        mainPanel.add(contentPanel, BorderLayout.CENTER);
+        contentLabel.setText(newPanel.getTitle());
+        contentPanel.removeAll();
+        contentPanel.add(newPanel.getMainPanel());
         main.revalidate();
     }
 
@@ -68,8 +68,8 @@ public class MainInterface extends MyPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == signOutButton) main.switchPanel(new LoginPage(main));
 //        else if (e.getSource() == dashboardButton) switchContentPanel(new BasePanel());
-//        else if (e.getSource() == orderButton) switchContentPanel(new BasePanel());
-        else if (e.getSource() == menuButton) switchContentPanel(new BasePanel(new MenuPanel(connection)));
+//        else if (e.getSource() == bookingsButton) switchContentPanel(new BasePanel());
+        else if (e.getSource() == menuButton) switchContentPanel(new MenuPanel(connection));
 //        else if (e.getSource() == tablesButton) switchContentPanel(new BasePanel());
 //        else if (e.getSource() == employeesButton) switchContentPanel(new BasePanel());
     }

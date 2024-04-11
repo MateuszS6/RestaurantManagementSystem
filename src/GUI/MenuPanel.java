@@ -2,17 +2,22 @@ package GUI;
 
 import JDBC.DBConnection;
 import JDBC.Dish;
-import JDBC.Menu;
 
 import javax.swing.*;
-import java.util.Arrays;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
-public class MenuPanel extends TestPanel {
+public class MenuPanel extends MyPanel implements ActionListener {
+    private JPanel mainPanel;
     private JTable menuTable;
+    private JButton refreshButton;
+    private JButton addButton;
+    private JButton removeButton;
 
     public MenuPanel(DBConnection connection) {
-        getContentLabel().setText("Menu");
+        setTitle("Menu");
 
         List<Dish> dishes = connection.getMenu().getDishes();
         String[] columns = {"ID", "Name", "Description", "Price", "Allergens"};
@@ -21,6 +26,16 @@ public class MenuPanel extends TestPanel {
 
         menuTable = new JTable(data, columns);
         menuTable.setFillsViewportHeight(true);
-        getContentPanel().add(new JScrollPane(menuTable));
+        mainPanel.add(new JScrollPane(menuTable));
+    }
+
+    @Override
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

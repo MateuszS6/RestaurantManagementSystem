@@ -10,7 +10,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.Arrays;
 
-public class LoginPage implements MyPanel, ActionListener, FocusListener, DocumentListener {
+public class LoginPage extends MyPanel implements ActionListener, FocusListener, DocumentListener {
     private final Main main;
     private final char echoChar;
     private JPanel mainPanel;

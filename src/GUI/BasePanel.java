@@ -2,21 +2,18 @@ package GUI;
 
 import javax.swing.*;
 
-public class TestPanel implements MyPanel {
+public class BasePanel extends MyPanel {
     private JPanel mainPanel;
     private JPanel contentPanel;
     private JLabel contentLabel;
 
+    public BasePanel(MyPanel displayPanel) {
+        contentPanel.add(displayPanel.getMainPanel());
+        contentLabel.setText(displayPanel.getTitle());
+    }
+
     @Override
     public JPanel getMainPanel() {
         return mainPanel;
-    }
-
-    public JPanel getContentPanel() {
-        return contentPanel;
-    }
-
-    public JLabel getContentLabel() {
-        return contentLabel;
     }
 }

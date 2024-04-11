@@ -58,9 +58,10 @@ public class Dish {
     }
 
     public String[] getInfo() {
-        return new String[]{String.valueOf(id), name, description, '£' + String.valueOf((int) price), null};
+        return new String[]{String.valueOf(id), name, description, '£' + String.valueOf((int) price), allergenInfo};
     }
 
+    // For debug
     public void print() {
         System.out.println("MenuItem{" +
                 "id=" + id +

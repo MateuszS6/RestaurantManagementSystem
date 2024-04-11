@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 
-public class MainInterface implements MyPanel, ActionListener {
+public class MainInterface extends MyPanel implements ActionListener {
     private final Main main;
     private final DBConnection connection;
     private JPanel mainPanel;
@@ -31,7 +31,7 @@ public class MainInterface implements MyPanel, ActionListener {
         main.addLabelIcon(logoLabel, "restaurant-logo.jpeg", -1, 150);
         main.addLabelIcon(poweredByLabel, "team-icon.png", -1, 30);
 
-        contentPanel = new MenuPanel(connection).getMainPanel();
+        contentPanel = new BasePanel(new MenuPanel(connection)).getMainPanel();
         mainPanel.add(contentPanel, BorderLayout.CENTER);
 
         // Buttons
@@ -67,10 +67,10 @@ public class MainInterface implements MyPanel, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == signOutButton) main.switchPanel(new LoginPage(main));
-        else if (e.getSource() == dashboardButton) switchContentPanel(new TestPanel());
-        else if (e.getSource() == orderButton) switchContentPanel(new TestPanel());
-        else if (e.getSource() == menuButton) switchContentPanel(new MenuPanel(connection));
-        else if (e.getSource() == tablesButton) switchContentPanel(new TestPanel());
-        else if (e.getSource() == employeesButton) switchContentPanel(new TestPanel());
+//        else if (e.getSource() == dashboardButton) switchContentPanel(new BasePanel());
+//        else if (e.getSource() == orderButton) switchContentPanel(new BasePanel());
+        else if (e.getSource() == menuButton) switchContentPanel(new BasePanel(new MenuPanel(connection)));
+//        else if (e.getSource() == tablesButton) switchContentPanel(new BasePanel());
+//        else if (e.getSource() == employeesButton) switchContentPanel(new BasePanel());
     }
 }

@@ -77,7 +77,7 @@
               <verticalTextPosition value="0"/>
             </properties>
           </component>
-          <component id="84e20" class="javax.swing.JButton" binding="bookingsButton">
+          <component id="84e20" class="javax.swing.JButton" binding="salesButton">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="50"/>
@@ -90,10 +90,10 @@
               <focusable value="false"/>
               <font name="Arial Black" size="16"/>
               <foreground color="-4144960"/>
-              <text value="Bookings"/>
+              <text value="Sales"/>
             </properties>
           </component>
-          <component id="162d5" class="javax.swing.JButton" binding="employeesButton">
+          <component id="162d5" class="javax.swing.JButton" binding="staffButton">
             <constraints>
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="50"/>
@@ -106,7 +106,7 @@
               <focusable value="false"/>
               <font name="Arial Black" size="16"/>
               <foreground color="-4144960"/>
-              <text value="Employees"/>
+              <text value="Staff"/>
             </properties>
           </component>
           <component id="42cce" class="javax.swing.JButton" binding="menuButton" default-binding="true">
@@ -189,7 +189,7 @@
             <properties>
               <font name="Britannic Bold" size="36"/>
               <foreground color="-16777216"/>
-              <text value="Test"/>
+              <text value="Content"/>
             </properties>
           </component>
           <grid id="d3e62" binding="contentPanel" layout-manager="CardLayout" hgap="0" vgap="0">

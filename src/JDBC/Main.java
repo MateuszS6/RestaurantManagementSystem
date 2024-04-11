@@ -19,7 +19,7 @@ public class Main {
 
             // FOH
 
-            System.out.println("Front of house:");
+            System.out.println("Front of house");
 
             int annualBooking = frontOfHouse.getAnnualBooking();
             System.out.println("1: Annual Bookings: " + annualBooking);
@@ -40,7 +40,7 @@ public class Main {
 
             // Kitchen
 
-            System.out.println("Kitchen:");
+            System.out.println("Kitchen");
 
             Kitchen kitchen = new Kitchen(connection);
 

@@ -3,7 +3,6 @@ package GUI;
 import JDBC.DBConnection;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
@@ -20,9 +19,9 @@ public class MainInterface extends MyPanel implements ActionListener {
     private JButton signOutButton;
     private JButton dashboardButton;
     private JButton menuButton;
-    private JButton bookingsButton;
+    private JButton salesButton;
     private JButton tablesButton;
-    private JButton employeesButton;
+    private JButton staffButton;
     private JLabel contentLabel;
 
     public MainInterface(Main m, String user) {
@@ -32,15 +31,15 @@ public class MainInterface extends MyPanel implements ActionListener {
         main.addLabelIcon(logoLabel, "restaurant-logo.jpeg", -1, 150);
         main.addLabelIcon(poweredByLabel, "team-icon.png", -1, 30);
 
-        switchContentPanel(new MenuPanel(connection));
+        switchContentPanel(new TablesPanel(connection));
 
         // Buttons
         signOutButton.addActionListener(this);
         dashboardButton.addActionListener(this);
-        bookingsButton.addActionListener(this);
+        salesButton.addActionListener(this);
         menuButton.addActionListener(this);
         tablesButton.addActionListener(this);
-        employeesButton.addActionListener(this);
+        staffButton.addActionListener(this);
 
         updateTime();
         Timer timer = new Timer(60000, e -> updateTime());
@@ -68,9 +67,9 @@ public class MainInterface extends MyPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == signOutButton) main.switchPanel(new LoginPage(main));
 //        else if (e.getSource() == dashboardButton) switchContentPanel(new BasePanel());
-//        else if (e.getSource() == bookingsButton) switchContentPanel(new BasePanel());
+//        else if (e.getSource() == salesButton) switchContentPanel(new BasePanel());
         else if (e.getSource() == menuButton) switchContentPanel(new MenuPanel(connection));
-//        else if (e.getSource() == tablesButton) switchContentPanel(new BasePanel());
-//        else if (e.getSource() == employeesButton) switchContentPanel(new BasePanel());
+        else if (e.getSource() == tablesButton) switchContentPanel(new TablesPanel(connection));
+//        else if (e.getSource() == staffButton) switchContentPanel(new BasePanel());
     }
 }

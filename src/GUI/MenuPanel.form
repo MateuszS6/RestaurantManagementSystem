@@ -12,31 +12,13 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="7d586" class="javax.swing.JButton" binding="refreshButton" default-binding="true">
+          <component id="7d586" class="javax.swing.JButton" binding="approveButton">
             <constraints/>
             <properties>
               <background color="-5460820"/>
               <focusable value="false"/>
               <font name="Arial Black"/>
-              <text value="Refresh"/>
-            </properties>
-          </component>
-          <component id="abfc9" class="javax.swing.JButton" binding="addButton">
-            <constraints/>
-            <properties>
-              <background color="-5460820"/>
-              <focusable value="false"/>
-              <font name="Arial Black"/>
-              <text value="+"/>
-            </properties>
-          </component>
-          <component id="670cd" class="javax.swing.JButton" binding="removeButton">
-            <constraints/>
-            <properties>
-              <background color="-5460820"/>
-              <focusable value="false"/>
-              <font name="Arial Black"/>
-              <text value="-"/>
+              <text value="Approve"/>
             </properties>
           </component>
         </children>

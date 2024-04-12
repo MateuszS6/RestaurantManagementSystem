@@ -11,17 +11,19 @@ public class MainInterface extends MyPanel implements ActionListener {
     private final Main main;
     private JPanel mainPanel;
     private JPanel contentPanel;
+    private MyPanel innerContentPanel;
     private JLabel welcomeLabel;
     private JLabel timeLabel;
     private JLabel logoLabel;
     private JLabel poweredByLabel;
+    private JLabel contentLabel;
     private JButton signOutButton;
     private JButton dashboardButton;
     private JButton menuButton;
     private JButton salesButton;
     private JButton tablesButton;
     private JButton staffButton;
-    private JLabel contentLabel;
+    private JButton refreshButton;
 
     public MainInterface(Main m, String user) {
         super(null, new DBConnection());
@@ -30,6 +32,7 @@ public class MainInterface extends MyPanel implements ActionListener {
         main.addLabelIcon(logoLabel, "restaurant-logo.jpeg", -1, 150);
         main.addLabelIcon(poweredByLabel, "team-icon.png", -1, 30);
 
+        // Initial content displayed
         switchContentPanel(new MenuPanel(getConnection()));
 
         // Buttons
@@ -39,10 +42,11 @@ public class MainInterface extends MyPanel implements ActionListener {
         menuButton.addActionListener(this);
         tablesButton.addActionListener(this);
         staffButton.addActionListener(this);
+        refreshButton.addActionListener(this);
 
+        // Time
         updateTime();
-        Timer timer = new Timer(60000, e -> updateTime());
-        timer.start();
+        new Timer(60000, e -> updateTime()).start();
     }
 
     public void updateTime() {
@@ -55,6 +59,7 @@ public class MainInterface extends MyPanel implements ActionListener {
         contentPanel.removeAll();
         contentPanel.add(newPanel.getMainPanel());
         main.revalidate();
+        innerContentPanel = newPanel;
     }
 
     @Override
@@ -70,5 +75,9 @@ public class MainInterface extends MyPanel implements ActionListener {
         else if (e.getSource() == menuButton) switchContentPanel(new MenuPanel(getConnection()));
         else if (e.getSource() == tablesButton) switchContentPanel(new TablesPanel(getConnection()));
 //        else if (e.getSource() == staffButton) switchContentPanel(new BasePanel());
+        else if (e.getSource() == refreshButton) {
+            reconnect();
+            switchContentPanel(innerContentPanel);
+        }
     }
 }

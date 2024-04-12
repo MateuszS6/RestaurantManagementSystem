@@ -11,17 +11,13 @@ import java.util.List;
 public class MenuPanel extends MyPanel implements ActionListener {
     private JPanel mainPanel;
     private JTable menuTable;
-    private JButton refreshButton;
-    private JButton addButton;
-    private JButton removeButton;
+    private JButton approveButton;
 
     public MenuPanel(DBConnection connection) {
         super("Menu", connection);
 
         // Buttons
-        refreshButton.addActionListener(this);
-        addButton.addActionListener(this);
-        removeButton.addActionListener(this);
+        approveButton.addActionListener(this);
     }
 
     private void createUIComponents() {
@@ -42,12 +38,8 @@ public class MenuPanel extends MyPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == refreshButton) {
-            System.out.println("Refresh Button pressed");
-        } else if (e.getSource() == addButton) {
-            System.out.println("Add Button pressed");
-        } else if (e.getSource() == removeButton) {
-            System.out.println("Remove Button pressed");
+        if (e.getSource() == approveButton) {
+            System.out.println("Approve Button pressed");
         }
     }
 }

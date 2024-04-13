@@ -20,37 +20,22 @@ public class Main {
             // FOH
 
             System.out.println("Front of house");
-
-            int annualBooking = frontOfHouse.getAnnualBooking();
-            System.out.println("1: Annual Bookings: " + annualBooking);
-
-            int annualCovers = frontOfHouse.getAnnualCovers();
-            System.out.println("2: Annual Covers: " + annualCovers);
-
-            int dayAverageBooking = frontOfHouse.getDayAverageBooking(WeekDay.MONDAY);
-            System.out.println("3: Average Bookings on WEEKDAY: " + dayAverageBooking);
-            // change this based on user input (any day of the week)
-
-            int dayAverageCovers = frontOfHouse.getDayAverageCovers(WeekDay.MONDAY);
-            System.out.println("4: Average Covers on WEEKDAY: " + dayAverageCovers);
-            // change this based on user input (any day of the week)
-
+            System.out.println("1 - Annual Bookings: " + frontOfHouse.getAnnualBooking());
+            System.out.println("2 - Annual Covers: " + frontOfHouse.getAnnualCovers());
+            // Change this based on user input (any day of the week)
+            System.out.println("3 - Average Bookings on MONDAY: " + frontOfHouse.getDayAverageBooking(WeekDay.MONDAY));
+            // Change this based on user input (any day of the week)
+            System.out.println("4 - Average Covers on MONDAY: " + frontOfHouse.getDayAverageCovers(WeekDay.MONDAY));
             //TODO: Send email notification if needed
             //frontOfHouse.sendLimitEmail(new Email("recipient@example.com"));
 
             // Kitchen
-
             System.out.println("Kitchen");
-
             Kitchen kitchen = new Kitchen(connection);
+            System.out.println("1 - Delivery Order: " + kitchen.getDeliveryOrder());
+            System.out.println("2 - Available Ingredients: " + kitchen.getIngredientsAvailable());
+            System.out.println("3 - Is Menu Approved? " + kitchen.getMenuApproval(menu,false));
 
-            Order deliveryOrder = kitchen.getDeliveryOrder();
-            System.out.println("1: Delivery Order: " + deliveryOrder);
-
-            System.out.println("2: Available Ingredients: " + kitchen.getIngredientsAvailable());
-
-            boolean isMenuApproved = kitchen.getMenuApproval(menu,false);
-            System.out.println("3: Is Menu Approved? " + isMenuApproved);
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }

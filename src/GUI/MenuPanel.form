@@ -39,7 +39,6 @@
                 <constraints/>
                 <properties>
                   <fillsViewportHeight value="true"/>
-                  <focusable value="false"/>
                 </properties>
               </component>
             </children>

@@ -13,8 +13,8 @@ public class TablesPanel extends MyPanel implements ActionListener {
     private JButton[] tables;
     private JLabel infoLabel;
 
-    public TablesPanel(DBConnection connection) {
-        super("Tables", connection);
+    public TablesPanel(MyPanel parent) {
+        super("Tables", parent.getConnection());
 
     }
 

@@ -3,9 +3,14 @@ package JDBC;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 public class DBConnection {
+    // Front of house
     private Menu menu;
+    // Kitchen
+    private List<Ingredient> ingredientsAvailable;
+    private List<Ingredient> deliveries;
 
     public DBConnection() {
         try (Connection connection = DriverManager.getConnection(
@@ -17,7 +22,9 @@ public class DBConnection {
             menu = frontOfHouse.getMenu();
             if (menu == null) throw new SQLException("Menu is null");
 
-//            Kitchen kitchen = new Kitchen(connection);
+            Kitchen kitchen = new Kitchen(connection);
+            ingredientsAvailable = kitchen.getIngredientsAvailable();
+            deliveries = kitchen.getDeliveryOrder();
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -26,10 +33,20 @@ public class DBConnection {
 
     public static void main(String[] args) {
         DBConnection test = new DBConnection();
-        test.getMenu().print();
+//        test.menu.print();
+        System.out.println(test.ingredientsAvailable);
+        System.out.println(test.deliveries);
     }
 
     public Menu getMenu() {
         return menu;
+    }
+
+    public List<Ingredient> getIngredientsAvailable() {
+        return ingredientsAvailable;
+    }
+
+    public List<Ingredient> getDeliveries() {
+        return deliveries;
     }
 }

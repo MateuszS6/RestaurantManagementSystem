@@ -3,19 +3,19 @@ package JDBC;
 import java.util.HashMap;
 
 public class Order {
-    private HashMap<IngredientOrder, Integer> ingredientAmounts;
+    private HashMap<Ingredient, Integer> ingredientAmounts;
     private String deliveryDetails; // New field
 
-    public Order(HashMap<IngredientOrder, Integer> ingredientAmounts, String deliveryDetails) {
+    public Order(HashMap<Ingredient, Integer> ingredientAmounts, String deliveryDetails) {
         this.ingredientAmounts = ingredientAmounts;
         this.deliveryDetails = deliveryDetails;
     }
 
-    public HashMap<IngredientOrder, Integer> getIngredientAmounts() {
+    public HashMap<Ingredient, Integer> getIngredientAmounts() {
         return ingredientAmounts;
     }
 
-    public void setIngredientAmounts(HashMap<IngredientOrder, Integer> ingredientAmounts) {
+    public void setIngredientAmounts(HashMap<Ingredient, Integer> ingredientAmounts) {
         this.ingredientAmounts = ingredientAmounts;
     }
 
@@ -28,19 +28,16 @@ public class Order {
     }
 
     public String getOrderDetails() {
-        StringBuilder details = new StringBuilder("Order Details:\n");
-        for (IngredientOrder ingredientOrder : ingredientAmounts.keySet()) {
-            int quantity = ingredientAmounts.get(ingredientOrder);
-            details.append("- ").append(quantity).append("x ").append(ingredientOrder).append("\n");
+        StringBuilder details = new StringBuilder("Order Details: ");
+        for (Ingredient ingredient : ingredientAmounts.keySet()) {
+            int quantity = ingredientAmounts.get(ingredient);
+            details.append("- ").append(quantity).append("x ").append(ingredient).append("\n");
         }
         return details.toString();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("Delivery Order:\n");
-        sb.append(getOrderDetails()); // Include order details
-        sb.append("Delivery Details: ").append(deliveryDetails).append("\n"); // Include delivery details
-        return sb.toString();
+    public void print() {
+        // Include order details
+        System.out.println(getOrderDetails() + "Delivery Details: " + deliveryDetails);
     }
 }

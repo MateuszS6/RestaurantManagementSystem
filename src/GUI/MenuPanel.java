@@ -1,6 +1,5 @@
 package GUI;
 
-import JDBC.DBConnection;
 import JDBC.Dish;
 
 import javax.swing.*;
@@ -13,8 +12,8 @@ public class MenuPanel extends MyPanel implements ActionListener {
     private JTable menuTable;
     private JButton approveButton;
 
-    public MenuPanel(DBConnection connection) {
-        super("Menu", connection);
+    public MenuPanel(MyPanel parent) {
+        super("Menu", parent.getConnection());
 
         // Buttons
         approveButton.addActionListener(this);
@@ -25,12 +24,12 @@ public class MenuPanel extends MyPanel implements ActionListener {
     private void createUIComponents() {
         // Populate arrays with menu items
         List<Dish> dishes = getConnection().getMenu().getDishes();
-        String[] columns = {"ID", "Name", "Description", "Price", "Allergens"};
-        String[][] data = new String[dishes.size()][columns.length];
-        for (Dish dish : dishes) data[dish.getId() - 1] = dish.getInfo();
+        String[] columnNames = {"ID", "Name", "Description", "Price", "Allergens"};
+        String[][] data = new String[dishes.size()][columnNames.length];
+        for (Dish d : dishes) data[d.getID() - 1] = d.getInfo();
 
         // Menu table
-        menuTable = new JTable(data, columns);
+        menuTable = new JTable(data, columnNames);
     }
 
     @Override

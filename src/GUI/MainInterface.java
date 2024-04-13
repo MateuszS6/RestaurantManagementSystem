@@ -34,7 +34,7 @@ public class MainInterface extends MyPanel implements ActionListener {
 
         // Initial content displayed
         connect();
-        switchContentPanel(new MenuPanel(getConnection()));
+        switchContentPanel(new MenuPanel(this));
         updateSideButtons(menuButton);
 
         // Buttons
@@ -65,11 +65,11 @@ public class MainInterface extends MyPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton button = (JButton) e.getSource();
         if (button == signOutButton) main.switchPanel(new LoginPage(main));
-        else if (button == menuButton) switchContentPanel(new MenuPanel(getConnection()));
+        else if (button == menuButton) switchContentPanel(new MenuPanel(this));
         else if (button == staffButton) System.out.println("Staff Button not implemented");
-        else if (button == tablesButton) switchContentPanel(new TablesPanel(getConnection()));
+        else if (button == tablesButton) switchContentPanel(new TablesPanel(this));
         else if (button == salesButton) System.out.println("Sales Button not implemented");
-        else if (button == inventoryButton) System.out.println("Inventory Button not implemented");
+        else if (button == inventoryButton) switchContentPanel(new InventoryPanel(this));
         else if (button == refreshButton) reconnect();
         if (button.getParent() == sidePanel) updateSideButtons(button);
     }
@@ -101,8 +101,9 @@ public class MainInterface extends MyPanel implements ActionListener {
 
     private void reconnect() {
         connect();
-        if (innerContentPanel instanceof MenuPanel) switchContentPanel(new MenuPanel(getConnection()));
-        else if (innerContentPanel instanceof TablesPanel) switchContentPanel(new TablesPanel(getConnection()));
+        if (innerContentPanel instanceof MenuPanel) switchContentPanel(new MenuPanel(this));
+        else if (innerContentPanel instanceof TablesPanel) switchContentPanel(new TablesPanel(this));
+        else if (innerContentPanel instanceof InventoryPanel) switchContentPanel(new InventoryPanel(this));
         System.out.println("Connection refreshed");
     }
 }

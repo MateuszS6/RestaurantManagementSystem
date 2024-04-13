@@ -11,16 +11,16 @@ public class Menu {
     }
 
     public void addDish(Dish dish) {
-        if (!isIdExists(dish.getId())) { // all dish IDs are unique and cannot be reused.
+        if (!isIdExists(dish.getID())) { // all dish IDs are unique and cannot be reused.
             dishes.add(dish); // if the ID does not exist (i,e it can be added, since it is unique).
         } else {
-            System.out.println("Dish with ID " + dish.getId() + " already exists in the menu. Cannot add.");
+            System.out.println("Dish with ID " + dish.getID() + " already exists in the menu. Cannot add.");
         }
     }
 
     private boolean isIdExists(int id) {
         for (Dish dish : dishes) {
-            if (dish.getId() == id) {
+            if (dish.getID() == id) {
                 return true;
             }
         }
@@ -39,7 +39,7 @@ public class Menu {
 
     public void print() {
         for (Dish dish : dishes) {
-            System.out.println("ID: " + dish.getId());
+            System.out.println("ID: " + dish.getID());
             System.out.println("\tName: " + dish.getName());
             System.out.println("\tDescription: " + dish.getDescription());
             System.out.println("\tPrice: " + dish.getPrice());

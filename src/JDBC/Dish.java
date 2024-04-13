@@ -1,14 +1,14 @@
 package JDBC;
 
 public class Dish {
-    private int id;
+    private int ID;
     private String name;
     private String description;
     private double price;
     private String allergenInfo; // Optional field for allergen information
 
     public Dish(int id, String name, String description, double price, String allergenInfo) {
-        this.id = id;
+        this.ID = id;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -17,12 +17,12 @@ public class Dish {
 
     // Getters and setters for all properties
 
-    public int getId() {
-        return id;
+    public int getID() {
+        return ID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getName() {
@@ -58,13 +58,13 @@ public class Dish {
     }
 
     public String[] getInfo() {
-        return new String[]{String.valueOf(id), name, description, '£' + String.valueOf((int) price), allergenInfo};
+        return new String[]{String.valueOf(ID), name, description, '£' + String.valueOf((int) price), allergenInfo};
     }
 
     // For debug
     public void print() {
         System.out.println("MenuItem{" +
-                "id=" + id +
+                "id=" + ID +
                 ", name=" + name + ", " +
                 "description=" + description + ", " +
                 "price=" + price + ", " +

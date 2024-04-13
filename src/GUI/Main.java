@@ -37,7 +37,7 @@ public class Main extends JFrame {
                 .getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH)));
     }
 
-    public void switchPanel(MyPanel newPanel) {
+    protected void switchPanel(MyPanel newPanel) {
         if (panel != null) remove(panel);
         panel = newPanel.getMainPanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));

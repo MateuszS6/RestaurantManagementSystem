@@ -73,7 +73,7 @@
                   <enabled value="false"/>
                   <focusable value="false"/>
                   <font name="Arial Black" size="20"/>
-                  <foreground color="-1"/>
+                  <foreground color="-4144960"/>
                   <selected value="false"/>
                   <text value="Clear"/>
                 </properties>
@@ -88,8 +88,10 @@
                   <background color="-12695991"/>
                   <borderPainted value="false"/>
                   <enabled value="false"/>
+                  <focusable value="false"/>
                   <font name="Arial Black" size="20"/>
-                  <foreground color="-1"/>
+                  <foreground color="-3959730"/>
+                  <opaque value="true"/>
                   <text value="Sign in"/>
                 </properties>
               </component>
@@ -100,7 +102,7 @@
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <foreground color="-3309774"/>
+              <foreground color="-3959730"/>
               <text value="Error"/>
             </properties>
           </component>

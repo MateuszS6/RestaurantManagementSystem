@@ -15,6 +15,7 @@ public class DBConnection {
 
             FrontOfHouse frontOfHouse = new FrontOfHouse(connection);
             menu = frontOfHouse.getMenu();
+            if (menu == null) throw new SQLException("Menu is null");
 
 //            Kitchen kitchen = new Kitchen(connection);
 

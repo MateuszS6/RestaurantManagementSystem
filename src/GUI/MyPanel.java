@@ -5,7 +5,7 @@ import JDBC.DBConnection;
 import javax.swing.*;
 
 public abstract class MyPanel {
-    private final String title;
+    private String title;
     private DBConnection connection;
 
     public MyPanel(String title, DBConnection connection) {
@@ -13,18 +13,19 @@ public abstract class MyPanel {
         this.connection = connection;
     }
 
+    public MyPanel() {}
+
     public abstract JPanel getMainPanel();
 
-    public String getTitle() {
+    protected String getTitle() {
         return title;
     }
 
-    public DBConnection getConnection() {
+    protected DBConnection getConnection() {
         return connection;
     }
 
-    public void reconnect() {
+    protected void connect() {
         connection = new DBConnection();
-        System.out.println("Connection refreshed");
     }
 }

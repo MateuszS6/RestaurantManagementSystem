@@ -22,7 +22,6 @@ public class LoginPage extends MyPanel implements ActionListener, FocusListener,
     private JButton signInButton;
 
     public LoginPage(Main m) {
-        super(null, null);
         main = m;
         echoChar = passwordField.getEchoChar();
         errorLabel.setText("");
@@ -37,7 +36,7 @@ public class LoginPage extends MyPanel implements ActionListener, FocusListener,
         usernameField.getDocument().addDocumentListener(this);
         passwordField.getDocument().addDocumentListener(this);
 
-        // To clear the fields or attempt log in
+        // Buttons
         signInButton.addActionListener(this);
         clearButton.addActionListener(this);
     }
@@ -71,9 +70,9 @@ public class LoginPage extends MyPanel implements ActionListener, FocusListener,
         } else if (e.getSource() == signInButton) {
             String username = usernameField.getText();
             String password = Arrays.toString(passwordField.getPassword());
-            if (!username.equals("Mateusz") && !password.equals("[m, a, t, z]"))
-                errorLabel.setText("Incorrect username or password.");
-            else main.switchPanel(new MainInterface(main, username));
+            if (username.equals("Mateusz") && password.equals("[m, a, t, z]"))
+                main.switchPanel(new MainInterface(main, username));
+            else errorLabel.setText("Incorrect username or password.");
         }
     }
 

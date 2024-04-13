@@ -18,6 +18,8 @@ public class MenuPanel extends MyPanel implements ActionListener {
 
         // Buttons
         approveButton.addActionListener(this);
+
+        // TODO: Menu to PDF
     }
 
     private void createUIComponents() {

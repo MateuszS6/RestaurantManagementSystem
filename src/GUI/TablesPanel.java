@@ -22,11 +22,12 @@ public class TablesPanel extends MyPanel implements ActionListener {
         tablesPanel = new JPanel(new GridLayout(5, 3));
         tables = new JButton[15];
         for (int b = 0; b < tables.length; b++) {
-            tables[b] = new JButton("TABLE " + (b + 1));
-            tables[b].setFocusable(false);
-            tables[b].setBackground(new Color(0x01A2FF));
-            tables[b].setForeground(Color.WHITE);
-            tables[b].setFont(new Font("Arial Black", Font.PLAIN, 18));
+            tables[b] = new JButton("Table " + (b + 1));
+//            tables[b].setFocusable(false);
+//            tables[b].setBorderPainted(false);
+//            tables[b].setBackground(tablesPanel.getBackground());
+//            tables[b].setForeground(new Color(0xC3944E));
+//            tables[b].setFont(new Font("Arial Black", Font.PLAIN, 18));
             tables[b].addActionListener(this);
             tablesPanel.add(tables[b]);
         }

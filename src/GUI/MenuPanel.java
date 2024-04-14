@@ -22,14 +22,15 @@ public class MenuPanel extends MyPanel implements ActionListener {
     }
 
     private void createUIComponents() {
-        // Populate arrays with menu items
         List<Dish> dishes = getConnection().getMenu().getDishes();
-        String[] columnNames = {"ID", "Name", "Description", "Price", "Allergens"};
-        String[][] data = new String[dishes.size()][columnNames.length];
+
+        // Populate arrays with menu items
+        String[] columns = {"ID", "Name", "Description", "Price", "Allergens"};
+        String[][] data = new String[dishes.size()][columns.length];
         for (Dish d : dishes) data[d.getID() - 1] = d.getInfo();
 
         // Menu table
-        menuTable = new JTable(data, columnNames);
+        menuTable = new JTable(data, columns);
     }
 
     @Override

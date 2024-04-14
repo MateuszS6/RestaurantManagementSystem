@@ -9,7 +9,7 @@ public class DBConnection {
     // Front of house
     private Menu menu;
     // Kitchen
-    private List<Ingredient> ingredientsAvailable;
+    private List<Ingredient> stock;
     private List<Ingredient> deliveries;
 
     public DBConnection() {
@@ -23,7 +23,7 @@ public class DBConnection {
             if (menu == null) throw new SQLException("Menu is null");
 
             Kitchen kitchen = new Kitchen(connection);
-            ingredientsAvailable = kitchen.getIngredientsAvailable();
+            stock = kitchen.getIngredientsAvailable();
             deliveries = kitchen.getDeliveryOrder();
 
         } catch (SQLException e) {
@@ -34,7 +34,7 @@ public class DBConnection {
     public static void main(String[] args) {
         DBConnection test = new DBConnection();
 //        test.menu.print();
-        System.out.println(test.ingredientsAvailable);
+        System.out.println(test.stock);
         System.out.println(test.deliveries);
     }
 
@@ -42,8 +42,8 @@ public class DBConnection {
         return menu;
     }
 
-    public List<Ingredient> getIngredientsAvailable() {
-        return ingredientsAvailable;
+    public List<Ingredient> getStock() {
+        return stock;
     }
 
     public List<Ingredient> getDeliveries() {

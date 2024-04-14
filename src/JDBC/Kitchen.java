@@ -16,35 +16,35 @@ public class Kitchen implements IKitchen {
 
     @Override
     public List<Ingredient> getDeliveryOrder() {
-        List<Ingredient> deliveryOrder = new ArrayList<>();
+        List<Ingredient> ingredients = new ArrayList<>();
 
-//        try {
-//            Statement statement = connection.createStatement();
-//            ResultSet resultSet = statement.executeQuery("SELECT * FROM DeliveryOrders LIMIT 1");
-//
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM DeliveryOrders");
+
+            while (resultSet.next()) {
+                int ingredientId = resultSet.getInt("IngredientID");
+                String ingredientName = resultSet.getString("IngredientName");
+                int quantity = resultSet.getInt("Quantity");
+
+                Ingredient ingredient = new Ingredient(ingredientId, ingredientName, quantity);
+                ingredients.add(ingredient);
+            }
+
 //            if (resultSet.next()) {
 //                HashMap<Ingredient, Integer> ingredientAmounts = new HashMap<>();
-//
-//                do {
-//                    int ingredientId = resultSet.getInt("IngredientID");
-//                    String ingredientName = resultSet.getString("IngredientName");
-//                    int quantity = resultSet.getInt("Quantity");
-//
-//                    Ingredient ingredient = new Ingredient(ingredientId, ingredientName, quantity);
-//                    ingredientAmounts.put(ingredient, quantity);
-//                } while (resultSet.next());
 //
 //                String deliveryDetails = "Delivery!";
 //                deliveryOrder = new Order(ingredientAmounts, deliveryDetails);
 //            }
-//
-//            resultSet.close();
-//            statement.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
 
-        return deliveryOrder;
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+        return ingredients;
     }
 
     @Override

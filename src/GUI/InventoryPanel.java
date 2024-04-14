@@ -16,19 +16,23 @@ public class InventoryPanel extends MyPanel {
     }
 
     private void createUIComponents() {
-        List<Ingredient> ingredients = getConnection().getIngredientsAvailable();
-//        List<Ingredient> deliveries = getConnection().getDeliveries();
-        String[] columnNames = {"ID", "Name", "Quantity"};
-        String[][] ingredientsData = new String[ingredients.size()][columnNames.length];
-        for (Ingredient i : ingredients) ingredientsData[i.getID() - 1] = i.getInfo();
+        List<Ingredient> stock = getConnection().getStock();
+        List<Ingredient> deliveries = getConnection().getDeliveries();
 
-        ingredientsTable = new JTable(ingredientsData, columnNames);
-
-        deliveriesTable = new JTable();
+        // Populate tables
+        String[] columns = {"ID", "Name", "Quantity"};
+        ingredientsTable = populateTable(stock, columns);
+        deliveriesTable = populateTable(deliveries, columns);
     }
 
     @Override
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    private JTable populateTable(List<Ingredient> ingredients, String[] columnNames) {
+        String[][] data = new String[ingredients.size()][columnNames.length];
+        for (Ingredient i : ingredients) data[i.getID() - 1] = i.getInfo();
+        return new JTable(data, columnNames);
     }
 }

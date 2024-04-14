@@ -34,8 +34,7 @@ public class MainInterface extends MyPanel implements ActionListener {
 
         // Initial content displayed
         connect();
-        switchContentPanel(new MenuPanel(this));
-        updateSideButtons(menuButton);
+        switchContentPanel(new InventoryPanel(this), inventoryButton);
 
         // Buttons
         signOutButton.addActionListener(this);
@@ -65,11 +64,11 @@ public class MainInterface extends MyPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton button = (JButton) e.getSource();
         if (button == signOutButton) main.switchPanel(new LoginPage(main));
-        else if (button == menuButton) switchContentPanel(new MenuPanel(this));
+        else if (button == menuButton) switchContentPanel(new MenuPanel(this), menuButton);
         else if (button == staffButton) System.out.println("Staff Button not implemented");
-        else if (button == tablesButton) switchContentPanel(new TablesPanel(this));
+        else if (button == tablesButton) switchContentPanel(new TablesPanel(this), tablesButton);
         else if (button == salesButton) System.out.println("Sales Button not implemented");
-        else if (button == inventoryButton) switchContentPanel(new InventoryPanel(this));
+        else if (button == inventoryButton) switchContentPanel(new InventoryPanel(this), inventoryButton);
         else if (button == refreshButton) reconnect();
         if (button.getParent() == sidePanel) updateSideButtons(button);
     }
@@ -79,7 +78,7 @@ public class MainInterface extends MyPanel implements ActionListener {
         timeLabel.setText(time);
     }
 
-    private void switchContentPanel(MyPanel newPanel) {
+    private void switchContentPanel(MyPanel newPanel, JButton button) {
         contentPanel.removeAll();
         innerContentPanel = newPanel;
         contentPanel.add(innerContentPanel.getMainPanel());
@@ -87,6 +86,7 @@ public class MainInterface extends MyPanel implements ActionListener {
 
         // Visuals
         contentLabel.setText(newPanel.getTitle());
+        updateSideButtons(button);
     }
 
     private void updateSideButtons(JButton newButton) {
@@ -101,9 +101,9 @@ public class MainInterface extends MyPanel implements ActionListener {
 
     private void reconnect() {
         connect();
-        if (innerContentPanel instanceof MenuPanel) switchContentPanel(new MenuPanel(this));
-        else if (innerContentPanel instanceof TablesPanel) switchContentPanel(new TablesPanel(this));
-        else if (innerContentPanel instanceof InventoryPanel) switchContentPanel(new InventoryPanel(this));
+        if (innerContentPanel instanceof MenuPanel) switchContentPanel(new MenuPanel(this), menuButton);
+        else if (innerContentPanel instanceof TablesPanel) switchContentPanel(new TablesPanel(this), tablesButton);
+        else if (innerContentPanel instanceof InventoryPanel) switchContentPanel(new InventoryPanel(this), inventoryButton);
         System.out.println("Connection refreshed");
     }
 }

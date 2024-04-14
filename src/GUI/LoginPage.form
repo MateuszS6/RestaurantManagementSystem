@@ -43,10 +43,12 @@
             </constraints>
             <properties>
               <background color="-4144960"/>
-              <font name="Monospaced" size="20"/>
+              <caretColor color="-3959730"/>
+              <font name="Monospaced" size="20" style="1"/>
               <foreground color="-6579301"/>
               <name value="Username"/>
-              <selectedTextColor color="-23296"/>
+              <selectedTextColor color="-4473925"/>
+              <selectionColor color="-3959730"/>
               <text value="Username"/>
             </properties>
           </component>
@@ -114,10 +116,12 @@
             </constraints>
             <properties>
               <background color="-4144960"/>
-              <font name="Monospaced" size="20"/>
+              <caretColor color="-3959730"/>
+              <font name="Monospaced" size="20" style="1"/>
               <foreground color="-6579301"/>
-              <name value="Username"/>
-              <selectedTextColor color="-23296"/>
+              <name value="Password"/>
+              <selectedTextColor color="-4473925"/>
+              <selectionColor color="-3959730"/>
               <text value="Password"/>
             </properties>
           </component>

@@ -3,10 +3,8 @@ package GUI;
 import JDBC.Dish;
 
 import javax.swing.*;
-import javax.swing.table.TableColumn;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Enumeration;
 import java.util.List;
 
 public class MenuPanel extends MyPanel implements ActionListener {
@@ -21,7 +19,6 @@ public class MenuPanel extends MyPanel implements ActionListener {
         approveButton.addActionListener(this);
 
         // TODO: Menu to PDF
-        // TODO: Optimise table columns to show more text
     }
 
     private void createUIComponents() {

@@ -14,7 +14,9 @@
             <preferred-size width="200" height="200"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <focusable value="false"/>
+        </properties>
         <border type="none"/>
         <children>
           <grid id="f2d47" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -36,6 +38,9 @@
                     <constraints/>
                     <properties>
                       <fillsViewportHeight value="true"/>
+                      <selectionBackground color="-3959730"/>
+                      <showHorizontalLines value="false"/>
+                      <showVerticalLines value="false"/>
                     </properties>
                   </component>
                 </children>
@@ -61,6 +66,9 @@
                     <constraints/>
                     <properties>
                       <fillsViewportHeight value="true"/>
+                      <selectionBackground color="-3959730"/>
+                      <showHorizontalLines value="false"/>
+                      <showVerticalLines value="false"/>
                     </properties>
                   </component>
                 </children>

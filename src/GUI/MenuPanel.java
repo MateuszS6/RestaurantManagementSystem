@@ -31,11 +31,11 @@ public class MenuPanel extends MyPanel implements ActionListener {
         // Populate arrays with menu items
         String[] menuColumnNames = {"ID", "Name", "Description", "Price", "Allergens"};
         String[][] menuData = new String[dishes.size()][menuColumnNames.length];
-        for (Dish d : dishes) menuData[d.getID() - 1] = d.getInfo();
+        for (int d = 0; d < dishes.size(); d++) menuData[d] = dishes.get(d).getInfo();
 
         String[] wineColumnNames = {"ID", "Menu Item ID", "Name"};
         String[][] wineData = new String[wines.size()][wineColumnNames.length];
-        for (WinePairing w : wines) wineData[w.getID() - 1] = w.getInfo();
+        for (int w = 0; w < wines.size(); w++) wineData[w] = wines.get(w).getInfo();
 
         // Menu table
         dishesTable = new JTable(menuData, menuColumnNames);

@@ -65,7 +65,7 @@ public class MainInterface extends MyPanel implements ActionListener {
         JButton button = (JButton) e.getSource();
         if (button == signOutButton) main.switchPanel(new LoginPage(main));
         else if (button == menuButton) switchContentPanel(new MenuPanel(this), menuButton);
-        else if (button == staffButton) System.out.println("Staff Button not implemented");
+        else if (button == staffButton) switchContentPanel(new StaffPanel(this), staffButton);
         else if (button == tablesButton) switchContentPanel(new TablesPanel(this), tablesButton);
         else if (button == salesButton) System.out.println("Sales Button not implemented");
         else if (button == inventoryButton) switchContentPanel(new InventoryPanel(this), inventoryButton);

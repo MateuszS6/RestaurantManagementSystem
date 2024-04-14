@@ -16,6 +16,7 @@
         </constraints>
         <properties>
           <focusable value="false"/>
+          <font size="16"/>
         </properties>
         <border type="none"/>
         <children>

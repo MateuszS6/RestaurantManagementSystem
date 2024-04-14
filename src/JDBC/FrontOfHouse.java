@@ -85,8 +85,7 @@ public class FrontOfHouse implements IFrontOfHouse {
                 int menuItemID = resultSet.getInt("MenuItemID");
                 String wineName = resultSet.getString("WineName");
 
-                WinePairing winePairing = new WinePairing(winePairingID, menuItemID, wineName);
-                winePairings.add(winePairing);
+                winePairings.add(new WinePairing(winePairingID, menuItemID, wineName));
             }
 
             resultSet.close();

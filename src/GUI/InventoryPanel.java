@@ -32,7 +32,7 @@ public class InventoryPanel extends MyPanel {
 
     private JTable populateTable(List<Ingredient> ingredients, String[] columnNames) {
         String[][] data = new String[ingredients.size()][columnNames.length];
-        for (Ingredient i : ingredients) data[i.getID() - 1] = i.getInfo();
+        for (int i = 0; i < ingredients.size(); i++) data[i] = ingredients.get(i).getInfo();
         return new JTable(data, columnNames);
     }
 }

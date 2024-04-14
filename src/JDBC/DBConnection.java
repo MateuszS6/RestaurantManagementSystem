@@ -12,6 +12,8 @@ public class DBConnection {
     // Kitchen
     private List<Ingredient> stock;
     private List<Ingredient> deliveries;
+    // Staff
+    private List<Employee> staffHolidays;
 
     public DBConnection() {
         try (Connection connection = DriverManager.getConnection(
@@ -19,14 +21,20 @@ public class DBConnection {
                 "in2033t06_a",
                 "PS7gGioYXOM")) {
 
+            // Front of house
             FrontOfHouse frontOfHouse = new FrontOfHouse(connection);
             menu = frontOfHouse.getMenu();
             if (menu == null) throw new SQLException("Menu is null");
             wines = frontOfHouse.getWinePairings();
 
+            // Kitchen
             Kitchen kitchen = new Kitchen(connection);
             stock = kitchen.getIngredientsAvailable();
             deliveries = kitchen.getDeliveryOrder();
+
+            // Staff
+            Staff staff = new Staff(connection);
+            staffHolidays = staff.getEmployeeHolidayDates();
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -37,8 +45,9 @@ public class DBConnection {
     public static void main(String[] args) {
         DBConnection test = new DBConnection();
 //        test.menu.print();
-        System.out.println(test.stock);
-        System.out.println(test.deliveries);
+//        System.out.println(test.stock);
+//        System.out.println(test.deliveries);
+//        System.out.println(test.staffHolidays);
     }
 
     public Menu getMenu() {
@@ -55,5 +64,9 @@ public class DBConnection {
 
     public List<Ingredient> getDeliveries() {
         return deliveries;
+    }
+
+    public List<Employee> getStaffHolidays() {
+        return staffHolidays;
     }
 }

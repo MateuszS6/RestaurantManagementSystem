@@ -1,6 +1,8 @@
 package JDBC;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 // NB: to run methods in this class, instantiate it in a main method and simply call the functions.
 
@@ -13,7 +15,7 @@ public class FrontOfHouse implements IFrontOfHouse {
 
     @Override
     public Menu getMenu() {
-        String query = "SELECT MenuItemID, Name, Description, Price, Allergens FROM MenuItems";
+        String query = "SELECT * FROM MenuItems";
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
@@ -69,6 +71,31 @@ public class FrontOfHouse implements IFrontOfHouse {
     public void sendLimitEmail(Email email) {
         // TODO: implement email sending API
         System.out.println("Sending limit email to: " + email.getRecipient());
+    }
+
+    @Override
+    public List<WinePairing> getWinePairings() {
+        List<WinePairing> winePairings = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM WinePairings");
+
+            while (resultSet.next()) {
+                int winePairingID = resultSet.getInt("WinePairingID");
+                int menuItemID = resultSet.getInt("MenuItemID");
+                String wineName = resultSet.getString("WineName");
+
+                WinePairing winePairing = new WinePairing(winePairingID, menuItemID, wineName);
+                winePairings.add(winePairing);
+            }
+
+            resultSet.close();
+            statement.close();
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return winePairings;
     }
 
     // helper to run the count SQL queries

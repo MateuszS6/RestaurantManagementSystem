@@ -8,6 +8,7 @@ import java.util.List;
 public class DBConnection {
     // Front of house
     private Menu menu;
+    private List<WinePairing> wines;
     // Kitchen
     private List<Ingredient> stock;
     private List<Ingredient> deliveries;
@@ -21,6 +22,7 @@ public class DBConnection {
             FrontOfHouse frontOfHouse = new FrontOfHouse(connection);
             menu = frontOfHouse.getMenu();
             if (menu == null) throw new SQLException("Menu is null");
+            wines = frontOfHouse.getWinePairings();
 
             Kitchen kitchen = new Kitchen(connection);
             stock = kitchen.getIngredientsAvailable();
@@ -41,6 +43,10 @@ public class DBConnection {
 
     public Menu getMenu() {
         return menu;
+    }
+
+    public List<WinePairing> getWines() {
+        return wines;
     }
 
     public List<Ingredient> getStock() {

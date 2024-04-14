@@ -1,5 +1,7 @@
 package JDBC;
 
+import java.util.List;
+
 /**
  * An interface outlining the front of house operations in the restaurant.
  * It handles tasks related to managing bookings, covers, and menu.
@@ -47,4 +49,6 @@ public interface IFrontOfHouse {
      * Sends an email notification when the number of bookings exceeds a predefined limit.
      */
     void sendLimitEmail(Email email);
+
+    List<WinePairing> getWinePairings();
 }

@@ -8,7 +8,7 @@ import java.util.List;
 public class InventoryPanel extends MyPanel {
     private JPanel mainPanel;
     private JTabbedPane tabbedPane;
-    private JTable ingredientsTable;
+    private JTable stockTable;
     private JTable deliveriesTable;
 
     public InventoryPanel(MyPanel parent) {
@@ -21,7 +21,7 @@ public class InventoryPanel extends MyPanel {
 
         // Populate tables
         String[] columns = {"ID", "Name", "Quantity"};
-        ingredientsTable = populateTable(stock, columns);
+        stockTable = populateTable(stock, columns);
         deliveriesTable = populateTable(deliveries, columns);
     }
 

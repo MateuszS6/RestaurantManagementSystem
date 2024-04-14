@@ -26,24 +26,55 @@
         <properties/>
         <border type="none"/>
         <children>
-          <scrollpane id="370a">
+          <tabbedpane id="779a2" binding="tabbedPane">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="200" height="200"/>
+              </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <focusable value="false"/>
+            </properties>
             <border type="none"/>
             <children>
-              <component id="d156e" class="javax.swing.JTable" binding="menuTable" custom-create="true">
-                <constraints/>
-                <properties>
-                  <fillsViewportHeight value="true"/>
-                  <selectionBackground color="-3959730"/>
-                  <showHorizontalLines value="false"/>
-                  <showVerticalLines value="false"/>
-                </properties>
-              </component>
+              <scrollpane id="370a">
+                <constraints>
+                  <tabbedpane title="Dishes"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="d156e" class="javax.swing.JTable" binding="dishesTable" custom-create="true">
+                    <constraints/>
+                    <properties>
+                      <fillsViewportHeight value="true"/>
+                      <selectionBackground color="-3959730"/>
+                      <showHorizontalLines value="false"/>
+                      <showVerticalLines value="false"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+              <scrollpane id="66a37">
+                <constraints>
+                  <tabbedpane title="Wine Pairings"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="c6761" class="javax.swing.JTable" binding="winesTable" custom-create="true">
+                    <constraints/>
+                    <properties>
+                      <fillsViewportHeight value="true"/>
+                      <selectionBackground color="-3959730"/>
+                      <showHorizontalLines value="false"/>
+                      <showVerticalLines value="false"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
             </children>
-          </scrollpane>
+          </tabbedpane>
         </children>
       </grid>
     </children>

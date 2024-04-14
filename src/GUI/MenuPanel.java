@@ -1,6 +1,7 @@
 package GUI;
 
 import JDBC.Dish;
+import JDBC.WinePairing;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +10,9 @@ import java.util.List;
 
 public class MenuPanel extends MyPanel implements ActionListener {
     private JPanel mainPanel;
-    private JTable menuTable;
+    private JTabbedPane tabbedPane;
+    private JTable dishesTable;
+    private JTable winesTable;
     private JButton approveButton;
 
     public MenuPanel(MyPanel parent) {
@@ -23,18 +26,26 @@ public class MenuPanel extends MyPanel implements ActionListener {
 
     private void createUIComponents() {
         List<Dish> dishes = getConnection().getMenu().getDishes();
+        List<WinePairing> wines = getConnection().getWines();
 
         // Populate arrays with menu items
-        String[] columnNames = {"ID", "Name", "Description", "Price", "Allergens"};
-        String[][] data = new String[dishes.size()][columnNames.length];
-        for (Dish d : dishes) data[d.getID() - 1] = d.getInfo();
+        String[] menuColumnNames = {"ID", "Name", "Description", "Price", "Allergens"};
+        String[][] menuData = new String[dishes.size()][menuColumnNames.length];
+        for (Dish d : dishes) menuData[d.getID() - 1] = d.getInfo();
+
+        String[] wineColumnNames = {"ID", "Menu Item ID", "Name"};
+        String[][] wineData = new String[wines.size()][wineColumnNames.length];
+        for (WinePairing w : wines) wineData[w.getID() - 1] = w.getInfo();
 
         // Menu table
-        menuTable = new JTable(data, columnNames);
-        changeColumnWidth(0, 10);
-        changeColumnWidth(1, 120);
-        changeColumnWidth(2, 260);
-        changeColumnWidth(3, 10);
+        dishesTable = new JTable(menuData, menuColumnNames);
+        changeColumnWidth(dishesTable, 0, 10);
+        changeColumnWidth(dishesTable, 1, 120);
+        changeColumnWidth(dishesTable, 2, 260);
+        changeColumnWidth(dishesTable, 3, 10);
+
+        // Wines table
+        winesTable = new JTable(wineData, wineColumnNames);
     }
 
     @Override
@@ -49,7 +60,7 @@ public class MenuPanel extends MyPanel implements ActionListener {
         }
     }
 
-    private void changeColumnWidth(int column, int width) {
-        menuTable.getColumnModel().getColumn(column).setPreferredWidth(width);
+    private void changeColumnWidth(JTable table, int column, int width) {
+        table.getColumnModel().getColumn(column).setPreferredWidth(width);
     }
 }

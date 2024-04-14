@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
-    private final List<Dish> dishes;
+    private final List<Dish> dishes = new ArrayList<>();
 
-    public Menu() {
-        dishes = new ArrayList<>();
+    // Method to get all dishes in the menu
+    public List<Dish> getDishes() {
+        return dishes;
     }
 
     public void addDish(Dish dish) {
@@ -18,6 +19,11 @@ public class Menu {
         }
     }
 
+    // Method to remove a dish from the menu
+    public void removeDish(Dish dish) {
+        dishes.remove(dish);
+    }
+
     private boolean isIdExists(int id) {
         for (Dish dish : dishes) {
             if (dish.getID() == id) {
@@ -25,16 +31,6 @@ public class Menu {
             }
         }
         return false;
-    }
-
-    // Method to remove a dish from the menu
-    public void removeDish(Dish dish) {
-        dishes.remove(dish);
-    }
-
-    // Method to get all dishes in the menu
-    public List<Dish> getDishes() {
-        return dishes;
     }
 
     public void print() {

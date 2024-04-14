@@ -1,19 +1,17 @@
 package GUI;
 
-import JDBC.DBConnection;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TablesPanel extends MyPanel implements ActionListener {
+public class RestaurantPanel extends MyPanel implements ActionListener {
     private JPanel mainPanel;
     private JPanel tablesPanel;
     private JButton[] tables;
     private JLabel infoLabel;
 
-    public TablesPanel(MyPanel parent) {
+    public RestaurantPanel(MyPanel parent) {
         super("Tables", parent.getConnection());
 
     }

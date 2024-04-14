@@ -18,11 +18,11 @@ public class MainInterface extends MyPanel implements ActionListener {
     private JLabel poweredByLabel;
     private JLabel contentLabel;
     private JButton signOutButton;
+    private JButton restaurantButton;
     private JButton menuButton;
+    private JButton inventoryButton;
     private JButton staffButton;
     private JButton salesButton;
-    private JButton tablesButton;
-    private JButton inventoryButton;
     private JButton selectedButton;
     private JButton refreshButton;
 
@@ -34,15 +34,15 @@ public class MainInterface extends MyPanel implements ActionListener {
 
         // Initial content displayed
         connect();
-        switchContentPanel(new InventoryPanel(this), inventoryButton);
+        switchContentPanel(new SalesPanel(this), salesButton);
 
         // Buttons
         signOutButton.addActionListener(this);
+        restaurantButton.addActionListener(this);
         menuButton.addActionListener(this);
+        inventoryButton.addActionListener(this);
         staffButton.addActionListener(this);
         salesButton.addActionListener(this);
-        tablesButton.addActionListener(this);
-        inventoryButton.addActionListener(this);
         refreshButton.addActionListener(this);
 
         // Time
@@ -64,11 +64,11 @@ public class MainInterface extends MyPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton button = (JButton) e.getSource();
         if (button == signOutButton) main.switchPanel(new LoginPage(main));
+        else if (button == restaurantButton) switchContentPanel(new RestaurantPanel(this), restaurantButton);
         else if (button == menuButton) switchContentPanel(new MenuPanel(this), menuButton);
-        else if (button == staffButton) switchContentPanel(new StaffPanel(this), staffButton);
-        else if (button == tablesButton) switchContentPanel(new TablesPanel(this), tablesButton);
-        else if (button == salesButton) System.out.println("Sales Button not implemented");
         else if (button == inventoryButton) switchContentPanel(new InventoryPanel(this), inventoryButton);
+        else if (button == staffButton) switchContentPanel(new StaffPanel(this), staffButton);
+        else if (button == salesButton) switchContentPanel(new SalesPanel(this), salesButton);
         else if (button == refreshButton) reconnect();
         if (button.getParent() == sidePanel) updateSideButtons(button);
     }
@@ -101,9 +101,11 @@ public class MainInterface extends MyPanel implements ActionListener {
 
     private void reconnect() {
         connect();
-        if (innerContentPanel instanceof MenuPanel) switchContentPanel(new MenuPanel(this), menuButton);
-        else if (innerContentPanel instanceof TablesPanel) switchContentPanel(new TablesPanel(this), tablesButton);
+        if (innerContentPanel instanceof RestaurantPanel) switchContentPanel(new RestaurantPanel(this), restaurantButton);
+        else if (innerContentPanel instanceof MenuPanel) switchContentPanel(new MenuPanel(this), menuButton);
         else if (innerContentPanel instanceof InventoryPanel) switchContentPanel(new InventoryPanel(this), inventoryButton);
+        else if (innerContentPanel instanceof StaffPanel) switchContentPanel(new StaffPanel(this), staffButton);
+        else if (innerContentPanel instanceof SalesPanel) switchContentPanel(new SalesPanel(this), salesButton);
         System.out.println("Connection refreshed");
     }
 }

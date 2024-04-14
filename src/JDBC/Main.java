@@ -20,10 +20,10 @@ public class Main {
             // FOH
 
             System.out.println("Front of house");
-            System.out.println("1 - Annual Bookings: " + frontOfHouse.getAnnualBooking());
+            System.out.println("1 - Annual Bookings: " + frontOfHouse.getAnnualBookings());
             System.out.println("2 - Annual Covers: " + frontOfHouse.getAnnualCovers());
             // Change this based on user input (any day of the week)
-            System.out.println("3 - Average Bookings on MONDAY: " + frontOfHouse.getDayAverageBooking(WeekDay.MONDAY));
+            System.out.println("3 - Average Bookings on MONDAY: " + frontOfHouse.getDayAverageBookings(WeekDay.MONDAY));
             // Change this based on user input (any day of the week)
             System.out.println("4 - Average Covers on MONDAY: " + frontOfHouse.getDayAverageCovers(WeekDay.MONDAY));
             //TODO: Send email notification if needed

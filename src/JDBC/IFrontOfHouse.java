@@ -19,7 +19,7 @@ public interface IFrontOfHouse {
      *
      * @return The total number of annual bookings.
      */
-    int getAnnualBooking();
+    int getAnnualBookings();
 
     /**
      * Retrieves the total number of covers served in the past year.
@@ -35,7 +35,7 @@ public interface IFrontOfHouse {
      * @param day a day of the week (an enum).
      * @return The average number of bookings for the specified day.
      */
-    int getDayAverageBooking(WeekDay day);
+    int getDayAverageBookings(WeekDay day);
 
     /**
      * Retrieves the average number of covers for a specific day of the week.

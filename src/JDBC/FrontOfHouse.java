@@ -40,7 +40,7 @@ public class FrontOfHouse implements IFrontOfHouse {
 
 
     @Override
-    public int getAnnualBooking() {
+    public int getAnnualBookings() {
         // total annual bookings
         String query = "SELECT COUNT(*) FROM Bookings WHERE YEAR(BookingDate) = YEAR(CURDATE())";
         return executeCountQuery(query);
@@ -54,7 +54,7 @@ public class FrontOfHouse implements IFrontOfHouse {
     }
 
     @Override
-    public int getDayAverageBooking(WeekDay day) {
+    public int getDayAverageBookings(WeekDay day) {
         // average weekday bookings (provided as argument)
         String query = "SELECT AverageBookings FROM DailyBookings WHERE DayOfWeek = ?";
         return executeAverageQuery(query, day.toString());

@@ -3,8 +3,10 @@ package GUI;
 import JDBC.Dish;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Enumeration;
 import java.util.List;
 
 public class MenuPanel extends MyPanel implements ActionListener {
@@ -19,18 +21,23 @@ public class MenuPanel extends MyPanel implements ActionListener {
         approveButton.addActionListener(this);
 
         // TODO: Menu to PDF
+        // TODO: Optimise table columns to show more text
     }
 
     private void createUIComponents() {
         List<Dish> dishes = getConnection().getMenu().getDishes();
 
         // Populate arrays with menu items
-        String[] columns = {"ID", "Name", "Description", "Price", "Allergens"};
-        String[][] data = new String[dishes.size()][columns.length];
+        String[] columnNames = {"ID", "Name", "Description", "Price", "Allergens"};
+        String[][] data = new String[dishes.size()][columnNames.length];
         for (Dish d : dishes) data[d.getID() - 1] = d.getInfo();
 
         // Menu table
-        menuTable = new JTable(data, columns);
+        menuTable = new JTable(data, columnNames);
+        changeColumnWidth(0, 10);
+        changeColumnWidth(1, 120);
+        changeColumnWidth(2, 260);
+        changeColumnWidth(3, 10);
     }
 
     @Override
@@ -43,5 +50,9 @@ public class MenuPanel extends MyPanel implements ActionListener {
         if (e.getSource() == approveButton) {
             System.out.println("Approve Button pressed");
         }
+    }
+
+    private void changeColumnWidth(int column, int width) {
+        menuTable.getColumnModel().getColumn(column).setPreferredWidth(width);
     }
 }

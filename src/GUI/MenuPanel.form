@@ -37,6 +37,7 @@
                 <constraints/>
                 <properties>
                   <fillsViewportHeight value="true"/>
+                  <selectionBackground color="-3959730"/>
                 </properties>
               </component>
             </children>

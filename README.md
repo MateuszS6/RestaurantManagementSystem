@@ -4,3 +4,4 @@
 ## Information for marker
 - Username: Linda
 - Password: pass
+- Artifact does not display sales, so run through IntelliJ

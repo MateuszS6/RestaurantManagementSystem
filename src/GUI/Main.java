@@ -8,6 +8,7 @@ import java.util.Objects;
 public class Main extends JFrame {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 560;
+    public static final Color HIGHLIGHT_COLOUR = new Color(0xC3944E);
     public static final Color PRIMARY_TEXT_COLOUR = new Color(0xFF9B9B9B, true);
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("EEEE HH:mm");
     private JPanel panel;

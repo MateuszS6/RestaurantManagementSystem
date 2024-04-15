@@ -4,6 +4,8 @@ import JDBC.Dish;
 import JDBC.WinePairing;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -13,15 +15,18 @@ public class MenuPanel extends MyPanel implements ActionListener {
     private JTabbedPane tabbedPane;
     private JTable dishesTable;
     private JTable winesTable;
+    private JButton addButton;
+    private JButton removeButton;
     private JButton approveButton;
+    private String[][] menuData;
 
     public MenuPanel(MyPanel parent) {
         super("Menu", parent.getConnection());
 
         // Buttons
-        approveButton.addActionListener(this);
-
-        // TODO: Menu to PDF
+        addButton.addActionListener(this);
+        removeButton.addActionListener(this);
+        approveButton.addActionListener(this); // TODO: Menu to PDF
     }
 
     private void createUIComponents() {
@@ -30,7 +35,7 @@ public class MenuPanel extends MyPanel implements ActionListener {
 
         // Populate arrays with menu items
         String[] menuColumnNames = {"ID", "Name", "Description", "Price", "Allergens"};
-        String[][] menuData = new String[dishes.size()][menuColumnNames.length];
+        menuData = new String[dishes.size()][menuColumnNames.length];
         for (int d = 0; d < dishes.size(); d++) menuData[d] = dishes.get(d).getInfo();
 
         String[] wineColumnNames = {"ID", "Menu Item ID", "Name"};
@@ -55,7 +60,11 @@ public class MenuPanel extends MyPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == approveButton) {
+        if (e.getSource() == addButton) {
+            System.out.println("Add Button pressed");
+        } else if (e.getSource() == removeButton) {
+            System.out.println("Remove Button pressed");
+        } else if (e.getSource() == approveButton) {
             System.out.println("Approve Button pressed");
         }
     }

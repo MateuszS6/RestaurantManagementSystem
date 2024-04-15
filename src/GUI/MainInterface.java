@@ -34,7 +34,7 @@ public class MainInterface extends MyPanel implements ActionListener {
 
         // Initial content displayed
         connect();
-        switchContentPanel(new SalesPanel(this), salesButton);
+        switchContentPanel(new RestaurantPanel(this), restaurantButton);
 
         // Buttons
         signOutButton.addActionListener(this);

@@ -51,26 +51,23 @@ public class DBConnection {
             // Sales
             dayAverageBookings = new int[7];
             dayAverageCovers = new int[7];
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < 7; i++) { // Add data for each weekday
                 dayAverageBookings[i] = frontOfHouse.getDayAverageBookings(intToWeekDay(i));
                 dayAverageCovers[i] = frontOfHouse.getDayAverageCovers(intToWeekDay(i));
             }
             bookingData = fetchBookingData();
             dishData = fetchDishData();
-            futureBookingPredictions = fetchFutureBookingPredictions(14); // For example, predicting the next 30 days
+            futureBookingPredictions = fetchFutureBookingPredictions(14); // Hardcoded example, predicting the next 14 days
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
-            System.exit(1);
+            System.exit(1); // Quit application if connection unsuccessful
         }
     }
 
     public static void main(String[] args) {
         DBConnection test = new DBConnection();
-//        test.menu.print();
-//        System.out.println(test.stock);
-//        System.out.println(test.deliveries);
-//        System.out.println(test.staffHolidays);
+        test.menu.print();
     }
 
     public Menu getMenu() {
@@ -121,6 +118,7 @@ public class DBConnection {
         return futureBookingPredictions;
     }
 
+    // Converts a day index to the corresponding weekday enum
     private WeekDay intToWeekDay(int day) {
         return switch (day) {
             case 0 -> WeekDay.MONDAY;
@@ -141,6 +139,7 @@ public class DBConnection {
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sqlQuery)) {
 
+            // Populate bookings hashmap
             while (resultSet.next()) {
                 Date bookingDate = resultSet.getDate("BookingDate");
                 int covers = resultSet.getInt("Covers");
@@ -209,6 +208,7 @@ public class DBConnection {
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
+            // Populate booking data
             while (resultSet.next()) {
                 Date bookingDate = resultSet.getDate("BookingDate");
                 int totalCovers = resultSet.getInt("TotalCovers");

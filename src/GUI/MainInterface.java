@@ -46,8 +46,8 @@ public class MainInterface extends MyPanel implements ActionListener {
         refreshButton.addActionListener(this);
 
         // Time
-        updateTime();
-        new Timer(60000, e -> updateTime()).start();
+        updateTime(); // Get current time to display
+        new Timer(60000, e -> updateTime()).start(); // Refresh every minute
     }
 
     private void createUIComponents() {
@@ -69,7 +69,7 @@ public class MainInterface extends MyPanel implements ActionListener {
         else if (button == inventoryButton) switchContentPanel(new InventoryPanel(this), inventoryButton);
         else if (button == staffButton) switchContentPanel(new StaffPanel(this), staffButton);
         else if (button == salesButton) switchContentPanel(new SalesPanel(this), salesButton);
-        else if (button == refreshButton) reconnect();
+        else if (button == refreshButton) reconnect(); // Re-instantiate current content panel
         if (button.getParent() == sidePanel) updateSideButtons(button);
     }
 
@@ -84,23 +84,24 @@ public class MainInterface extends MyPanel implements ActionListener {
         contentPanel.add(innerContentPanel.getMainPanel());
         main.revalidate();
 
-        // Visuals
-        contentLabel.setText(newPanel.getTitle());
-        updateSideButtons(button);
+        contentLabel.setText(newPanel.getTitle()); // Set content menu title
+        updateSideButtons(button); // Switch colours to selected button
     }
 
     private void updateSideButtons(JButton newButton) {
+        // Set current button to unselected colour
         if (selectedButton != null) {
             selectedButton.setBackground(new Color(0x3E4649));
             selectedButton.setForeground(new Color(0xC0C0C0));
         }
+        // Set new button as selected and change to selected colour
         selectedButton = newButton;
         selectedButton.setBackground(new Color(0xC3944E));
         selectedButton.setForeground(Color.WHITE);
     }
 
     private void reconnect() {
-        connect();
+        connect(); // Create new connection
         if (innerContentPanel instanceof RestaurantPanel) switchContentPanel(new RestaurantPanel(this), restaurantButton);
         else if (innerContentPanel instanceof MenuPanel) switchContentPanel(new MenuPanel(this), menuButton);
         else if (innerContentPanel instanceof InventoryPanel) switchContentPanel(new InventoryPanel(this), inventoryButton);

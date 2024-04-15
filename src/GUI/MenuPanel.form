@@ -72,7 +72,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="d156e" class="javax.swing.JTable" binding="dishesTable" custom-create="true">
+                  <component id="d156e" class="javax.swing.JTable" binding="dishTable" custom-create="true">
                     <constraints/>
                     <properties>
                       <fillsViewportHeight value="true"/>
@@ -90,7 +90,7 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="c6761" class="javax.swing.JTable" binding="winesTable" custom-create="true">
+                  <component id="c6761" class="javax.swing.JTable" binding="wineTable" custom-create="true">
                     <constraints/>
                     <properties>
                       <fillsViewportHeight value="true"/>

@@ -13,8 +13,9 @@ public class StaffPanel extends MyPanel {
         super("Staff", parent.getConnection());
     }
 
+    // Custom-create for staff holidays table
     private void createUIComponents() {
-        List<Employee> staffHolidays = getConnection().getStaffHolidays();
+        List<Employee> staffHolidays = getConnection().getStaffHolidays(); // Staff/holiday list
 
         // Populate table arrays
         String[] columnNames = new String[]{"ID", "Name", "Role", "Holiday Dates"};

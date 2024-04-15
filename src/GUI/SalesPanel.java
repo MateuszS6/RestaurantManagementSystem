@@ -41,23 +41,17 @@ public class SalesPanel extends MyPanel {
     public SalesPanel(MyPanel parent) {
         super("Sales", parent.getConnection());
 
-        // Drop-down menus
-        bookingsComboBox.addActionListener(e -> {
-            String average = getConnection().getDayAverageBookings(bookingsComboBox.getSelectedIndex());
-            dayBookingsLabel.setText(average);
-        });
-        coversComboBox.addActionListener(e -> {
-            String average = getConnection().getDayAverageCovers(coversComboBox.getSelectedIndex());
-            dayCoversLabel.setText(average);
-        });
+        // Drop-down menus: set number using selected index of drop-down menu
+        bookingsComboBox.addActionListener(e -> dayBookingsLabel.setText(getConnection().getDayAverageBookings(bookingsComboBox.getSelectedIndex())));
+        coversComboBox.addActionListener(e -> dayCoversLabel.setText(getConnection().getDayAverageCovers(coversComboBox.getSelectedIndex())));
 
-        // Statistic labels
+        // Set statistic labels using inherited connection
         dayBookingsLabel.setText(getConnection().getDayAverageBookings(0)); // 0 -> on Monday
         dayCoversLabel.setText(getConnection().getDayAverageCovers(0)); // 0 -> Monday
         annualBookingsLabel.setText(getConnection().getAnnualBookings());
         annualCoversLabel.setText(getConnection().getAnnualCovers());
 
-        // Charts
+        // Create charts
         createChart();
         createPopRevenueChart();
         createPredictedBookings();
@@ -73,9 +67,8 @@ public class SalesPanel extends MyPanel {
         TimeSeries series = new TimeSeries("Number of Covers");
 
         Map<Date, Integer> bookingDataMap = getConnection().getBookingData();
-        for (Map.Entry<Date, Integer> entry : bookingDataMap.entrySet()) {
+        for (Map.Entry<Date, Integer> entry : bookingDataMap.entrySet())
             series.addOrUpdate(new Day(entry.getKey()), entry.getValue());
-        }
         TimeSeriesCollection dataset = new TimeSeriesCollection();
         dataset.addSeries(series);
 
@@ -171,9 +164,7 @@ public class SalesPanel extends MyPanel {
         rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 
         // Customize the chart legend
-        if (chart.getLegend() != null) {
-            chart.getLegend().setItemFont(new Font("Dialog", Font.PLAIN, 12));
-        }
+        if (chart.getLegend() != null) chart.getLegend().setItemFont(new Font("Dialog", Font.PLAIN, 12));
 
         // Add the customized chart to a ChartPanel
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -188,24 +179,22 @@ public class SalesPanel extends MyPanel {
         Map<Date, Integer> historicalBookings = getConnection().getBookingData();
         TimeSeries series = new TimeSeries("Historical Bookings");
 
-        for (Map.Entry<Date, Integer> entry : historicalBookings.entrySet()) {
+        for (Map.Entry<Date, Integer> entry : historicalBookings.entrySet())
             series.addOrUpdate(new Day(entry.getKey()), entry.getValue());
-        }
 
         // Now fetch the future booking predictions - decide how many days you want to predict
         Map<Date, Integer> futurePredictions = getConnection().getFutureBookingPredictions();
 
         // Populate the forecast series with predicted data
         TimeSeries forecastSeries = new TimeSeries("Forecasted Bookings");
-        for (Map.Entry<Date, Integer> entry : futurePredictions.entrySet()) {
+        for (Map.Entry<Date, Integer> entry : futurePredictions.entrySet())
             forecastSeries.addOrUpdate(new Day(entry.getKey()), entry.getValue());
-        }
 
         TimeSeriesCollection dataset = new TimeSeriesCollection();
-        dataset.addSeries(series);         // Your historical data
+        dataset.addSeries(series); // Your historical data
         dataset.addSeries(forecastSeries); // Your forecasted data
 
-// Now create your chart with the dataset
+        // Now create your chart with the dataset
         JFreeChart chart = ChartFactory.createTimeSeriesChart(
                 "Booking Trend and Forecast",
                 "Date",
@@ -216,57 +205,55 @@ public class SalesPanel extends MyPanel {
                 false
         );
 
-// Customise the appearance of the chart to distinguish forecasted data
-        // Assuming 'chart' is your JFreeChart object
-        XYPlot plot = chart.getXYPlot();
+        // Customise the appearance of the chart to distinguish forecasted data
+        XYPlot plot = chart.getXYPlot(); // Assuming 'chart' is your JFreeChart object
 
-// Customizing the renderer for historical bookings
+        // Customising the renderer for historical bookings
         XYItemRenderer historicalRenderer = new XYLineAndShapeRenderer(true, false);
         historicalRenderer.setSeriesPaint(0, new Color(0, 0, 255)); // Blue for historical bookings
         historicalRenderer.setSeriesStroke(0, new BasicStroke(2.0f));
         plot.setRenderer(0, historicalRenderer);
 
-// Customizing the renderer for forecasted bookings
+        // Customising the renderer for forecasted bookings
         XYItemRenderer forecastRenderer = new XYLineAndShapeRenderer(true, false);
         forecastRenderer.setSeriesPaint(0, new Color(255, 165, 0)); // Orange for forecasted bookings
         forecastRenderer.setSeriesStroke(0, new BasicStroke(2.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL, 1.0f, new float[] {10.0f}, 0.0f));
         plot.setRenderer(1, forecastRenderer);
 
-// Customizing the plot background and gridlines
+        // Customising the plot background and gridlines
         plot.setBackgroundPaint(Color.white);
         plot.setDomainGridlinePaint(new Color(221, 221, 221));
         plot.setRangeGridlinePaint(new Color(221, 221, 221));
 
-// Rotate x-axis labels to make them more readable
+        // Rotate x-axis labels to make them more readable
         // CategoryAxis domainAxis = plot.getDomainAxis();
         // domainAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
 
-// Customizing the range axis
+        // Customising the range axis
         NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
         rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 
-// Set tooltips for more interaction
+        // Set tooltips for more interaction
         historicalRenderer.setBaseToolTipGenerator(new StandardXYToolTipGenerator());
         forecastRenderer.setBaseToolTipGenerator(new StandardXYToolTipGenerator());
 
-// Update the legend and titles for clarity
+        // Update the legend and titles for clarity
         LegendTitle legend = chart.getLegend();
         if (legend != null) {
             legend.setItemFont(new Font("Dialog", Font.PLAIN, 12));
         }
         chart.setTitle(new TextTitle("Booking Trend and Forecast", new Font("Dialog", Font.BOLD, 14)));
 
-// Add the chart to a panel
+        // Add the chart to a panel
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setMouseWheelEnabled(true);
 
 
-// Add the chart to a panel like before
+        // Add the chart to a panel like before
         //chartPanel = new ChartPanel(chart);
-// ... rest of your ChartPanel setup ...
+        // ... rest of your ChartPanel setup ...
 
-// Add the ChartPanel to your GUI
+        // Add the ChartPanel to your GUI
         tabbedPane.addTab("Booking Forecast", chartPanel);
     }
-
 }

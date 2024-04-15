@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.sql.*;
 import java.util.Arrays;
 
+// Test class for SQL statements
 public class SQLConnect {
     static final String serverName = "smcse-stuproj00.city.ac.uk";
     static final String portNumber = "3306";

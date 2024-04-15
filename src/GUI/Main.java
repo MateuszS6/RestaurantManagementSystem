@@ -20,8 +20,7 @@ public class Main extends JFrame {
         setResizable(false);
         setVisible(true);
 
-        switchPanel(new LoginPage(this));
-//        switchPanel(new MainInterface(this, null));
+        switchPanel(new LoginPage(this)); // Username: Linda    Password: pass
         setLocationRelativeTo(null); // Centre on screen
     }
 

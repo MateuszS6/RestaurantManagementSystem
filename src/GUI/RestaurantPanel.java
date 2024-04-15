@@ -12,9 +12,12 @@ public class RestaurantPanel extends MyPanel implements ActionListener {
     private JComboBox dateComboBox;
     private JLabel tableNumberLabel;
     private JLabel statusLabel;
+    private JRadioButton a20RadioButton;
+    private JRadioButton a25RadioButton;
+    private JRadioButton a30RadioButton;
 
     public RestaurantPanel(MyPanel parent) {
-        super("Tables", parent.getConnection());
+        super("Restaurant", parent.getConnection());
 
         dateComboBox.addActionListener(e -> {
             for (JButton t : tables) {
@@ -51,6 +54,7 @@ public class RestaurantPanel extends MyPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         for (JButton t : tables) {
             if (e.getSource() == t) {
+                tableNumberLabel.setText(t.getText());
                 if (t.getBackground() == Main.HIGHLIGHT_COLOUR) statusLabel.setText("Status: Vacant");
                 else if (t.getBackground() == Color.LIGHT_GRAY) statusLabel.setText("Status: Booked");
             }

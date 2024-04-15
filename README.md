@@ -1,4 +1,4 @@
-# RestaurantAdminSystem
+# Restaurant Management
 A restaurant management system, showing restaurant details, menus, and sales charts, built for my IN2033 Team Project Coursework.
 
 > [!IMPORTANT]

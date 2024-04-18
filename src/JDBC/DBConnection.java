@@ -5,25 +5,80 @@ import java.sql.*;
 import java.sql.Date;
 import java.util.*;
 
+/**
+ * The DBConnection class manages the connection to the database and provides methods
+ * to retrieve and manipulate data related to the restaurant's operations.
+ */
 public class DBConnection {
+    /**
+     * Represents the database connection.
+     */
     private Connection connection;
-    // Restaurant
+
+    /**
+     * Represents the menu of the restaurant.
+     */
     private Menu menu;
+
+    /**
+     * Represents the list of wine pairings available in the restaurant.
+     */
     private List<WinePairing> wines;
-    // Inventory
+
+    /**
+     * Represents the current stock of ingredients in the restaurant's inventory.
+     */
     private List<Ingredient> stock;
+
+    /**
+     * Represents the list of ingredient deliveries received by the restaurant.
+     */
     private List<Ingredient> deliveries;
-    // Staff
+
+    /**
+     * Represents the list of staff members who are on holiday.
+     */
     private List<Employee> staffHolidays;
-    // Sales
+
+    /**
+     * Represents the average number of bookings for each day of the week.
+     */
     private int[] dayAverageBookings;
+
+    /**
+     * Represents the average number of covers (guests) for each day of the week.
+     */
     private int[] dayAverageCovers;
+
+    /**
+     * Represents the total number of annual bookings.
+     */
     private int annualBookings;
+
+    /**
+     * Represents the total number of annual covers (guests).
+     */
     private int annualCovers;
+
+    /**
+     * Represents the booking data, mapping booking dates to the number of covers.
+     */
     private Map<Date, Integer> bookingData;
+
+    /**
+     * Represents the sales data for dishes, mapping dish names to sales quantity and revenue.
+     */
     private Map<String, Map.Entry<Integer, BigDecimal>> dishData;
+
+    /**
+     * Represents the future booking predictions, mapping dates to predicted booking numbers.
+     */
     private Map<Date, Integer> futureBookingPredictions;
 
+    /**
+     * Constructs a new DBConnection object and establishes a connection to the database.
+     * Initializes various data structures and fetches data related to the restaurant's operations.
+     */
     public DBConnection() {
         try (Connection connection = DriverManager.getConnection(
                 "jdbc:mysql://smcse-stuproj00.city.ac.uk:3306/in2033t06",
@@ -65,60 +120,110 @@ public class DBConnection {
         }
     }
 
-    public static void main(String[] args) {
-        DBConnection test = new DBConnection();
-        test.menu.print();
-    }
-
+    /**
+     * Retrieves the menu of the restaurant.
+     * @return The menu of the restaurant.
+     */
     public Menu getMenu() {
         return menu;
     }
 
+    /**
+     * Retrieves the list of wine pairings available in the restaurant.
+     * @return The list of wine pairings.
+     */
     public List<WinePairing> getWines() {
         return wines;
     }
 
+    /**
+     * Retrieves the total number of annual bookings.
+     * @return The total number of annual bookings.
+     */
     public String getAnnualBookings() {
         return String.valueOf(annualBookings);
     }
 
+    /**
+     * Retrieves the total number of annual covers (guests).
+     * @return The total number of annual covers.
+     */
     public String getAnnualCovers() {
         return String.valueOf(annualCovers);
     }
 
+    /**
+     * Retrieves the average number of bookings for the specified day of the week.
+     * @param dayIndex The index representing the day of the week (0 for Monday, 1 for Tuesday, and so on).
+     * @return The average number of bookings for the specified day of the week.
+     */
     public String getDayAverageBookings(int dayIndex) {
         return String.valueOf(dayAverageBookings[dayIndex]);
     }
 
+    /**
+     * Retrieves the average number of covers (guests) for the specified day of the week.
+     * @param dayIndex The index representing the day of the week (0 for Monday, 1 for Tuesday, and so on).
+     * @return The average number of covers for the specified day of the week.
+     */
     public String getDayAverageCovers(int dayIndex) {
         return String.valueOf(dayAverageCovers[dayIndex]);
     }
 
+    /**
+     * Retrieves the current stock of ingredients in the restaurant's inventory.
+     * @return The list of ingredients in stock.
+     */
     public List<Ingredient> getStock() {
         return stock;
     }
 
+    /**
+     * Retrieves the list of ingredient deliveries received by the restaurant.
+     * @return The list of ingredient deliveries.
+     */
     public List<Ingredient> getDeliveries() {
         return deliveries;
     }
 
+    /**
+     * Retrieves the list of staff members who are on holiday.
+     * @return The list of staff members on holiday.
+     */
     public List<Employee> getStaffHolidays() {
         return staffHolidays;
     }
 
+    /**
+     * Retrieves the booking data, mapping booking dates to the number of covers.
+     * @return The booking data.
+     */
     public Map<Date, Integer> getBookingData() {
         return bookingData;
     }
 
+    /**
+     * Retrieves the sales data for dishes, mapping dish names to sales quantity and revenue.
+     * @return The dish sales data.
+     */
     public Map<String, Map.Entry<Integer, BigDecimal>> getDishData() {
         return dishData;
     }
 
+    /**
+     * Retrieves the future booking predictions, mapping dates to predicted booking numbers.
+     * @return The future booking predictions.
+     */
     public Map<Date, Integer> getFutureBookingPredictions() {
         return futureBookingPredictions;
     }
 
-    // Converts a day index to the corresponding weekday enum
+    /**
+     * Converts an integer representing a day index to the corresponding WeekDay enum value.
+     *
+     * @param day The index of the day (0 for Monday, 1 for Tuesday, ..., 6 for Sunday).
+     * @return The WeekDay enum value corresponding to the given day index.
+     */
     private WeekDay intToWeekDay(int day) {
         return switch (day) {
             case 0 -> WeekDay.MONDAY;
@@ -132,6 +237,10 @@ public class DBConnection {
         };
     }
 
+    /**
+     * Fetches the booking data from the database, mapping booking dates to the number of covers.
+     * @return The booking data.
+     */
     private Map<Date, Integer> fetchBookingData() {
         Map<Date, Integer> bookings = new HashMap<>();
         String sqlQuery = "SELECT BookingDate, Covers FROM Bookings";
@@ -151,6 +260,10 @@ public class DBConnection {
         return bookings;
     }
 
+    /**
+     * Fetches the sales data for dishes from the database, mapping dish names to sales quantity and revenue.
+     * @return The dish sales data.
+     */
     private Map<String, Map.Entry<Integer, BigDecimal>> fetchDishData() {
         Map<String, Map.Entry<Integer, BigDecimal>> dishData = new HashMap<>();
         String sqlQuery = "SELECT m.Name, s.Quantity, m.Price FROM MenuItems m JOIN SaleItems s ON m.MenuItemID = s.MenuItemID";
@@ -175,6 +288,11 @@ public class DBConnection {
         return dishData;
     }
 
+    /**
+     * Fetches the future booking predictions from the database.
+     * @param daysToPredict The number of days for which to predict bookings.
+     * @return The future booking predictions.
+     */
     private Map<Date, Integer> fetchFutureBookingPredictions(int daysToPredict) {
         // First, get the historical data
         Map<Date, Integer> historicalData = fetchBookingData2();
@@ -201,6 +319,10 @@ public class DBConnection {
         return futurePredictions;
     }
 
+    /**
+     * Fetches the booking data from the database, summing up covers for each booking date.
+     * @return The booking data.
+     */
     private Map<Date, Integer> fetchBookingData2() {
         Map<Date, Integer> bookingData = new HashMap<>();
         String query = "SELECT BookingDate, SUM(Covers) AS TotalCovers FROM Bookings GROUP BY BookingDate";

@@ -5,17 +5,37 @@ import JDBC.Employee;
 import javax.swing.*;
 import java.util.List;
 
+/**
+ * The StaffPanel class represents a panel for displaying staff-related information.
+ * It extends the MyPanel class and provides functionality to display staff holidays in a table.
+ */
 public class StaffPanel extends MyPanel {
+    /**
+     * The main panel for displaying staff-related information.
+     */
     private JPanel mainPanel;
+
+    /**
+     * Table displaying staff holidays.
+     */
     private JTable staffHolidaysTable;
 
+    /**
+     * Constructs a StaffPanel object with a specified parent panel.
+     *
+     * @param parent The parent panel.
+     */
     public StaffPanel(MyPanel parent) {
         super("Staff", parent.getConnection());
     }
 
-    // Custom-create for staff holidays table
+    /**
+     * Custom-creates the staff holidays table for the staff panel.
+     * Populates the table with data retrieved from the database connection.
+     */
     private void createUIComponents() {
-        List<Employee> staffHolidays = getConnection().getStaffHolidays(); // Staff/holiday list
+        // Staff/holiday list
+        List<Employee> staffHolidays = getConnection().getStaffHolidays();
 
         // Populate table arrays
         String[] columnNames = new String[]{"ID", "Name", "Role", "Holiday Dates"};

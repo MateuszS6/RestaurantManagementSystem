@@ -8,16 +8,52 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * The MenuPanel class represents the menu management panel in the Lancaster's Restaurant Management system.
+ * It allows users to view, add, remove, and approve dishes and wine pairings.
+ * The class extends MyPanel and implements ActionListener interface to handle button clicks.
+ */
 public class MenuPanel extends MyPanel implements ActionListener {
+    /**
+     * The main JPanel associated with the menu panel.
+     */
     private JPanel mainPanel;
-    private JTabbedPane tabbedPane;
-    private JTable dishTable;
-    private JTable wineTable;
-    private JButton addButton;
-    private JButton removeButton;
-    private JButton approveButton;
-    private String[][] dishData;
 
+    /**
+     * The tabbed pane to display dishes and wine pairings.
+     */
+    private JTabbedPane tabbedPane;
+
+    /**
+     * The table to display dish information.
+     */
+    private JTable dishTable;
+
+    /**
+     * The table to display wine pairing information.
+     */
+    private JTable wineTable;
+
+    /**
+     * The button to add a new dish or wine pairing.
+     */
+    private JButton addButton;
+
+    /**
+     * The button to remove a selected dish or wine pairing.
+     */
+    private JButton removeButton;
+
+    /**
+     * The button to approve changes to the menu and export it to PDF.
+     */
+    private JButton approveButton;
+
+    /**
+     * Constructs a new MenuPanel object with the specified parent panel.
+     *
+     * @param parent the parent panel
+     */
     public MenuPanel(MyPanel parent) {
         super("Menu", parent.getConnection());
 
@@ -34,7 +70,7 @@ public class MenuPanel extends MyPanel implements ActionListener {
 
         // Populate dish arrays with data from the DB connection
         String[] menuColumnNames = {"ID", "Name", "Description", "Price", "Allergens"};
-        dishData = new String[dishes.size()][menuColumnNames.length];
+        String[][] dishData = new String[dishes.size()][menuColumnNames.length];
         for (int d = 0; d < dishes.size(); d++) dishData[d] = dishes.get(d).getInfo();
 
         // Populate wine arrays with data from the DB connection

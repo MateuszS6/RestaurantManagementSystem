@@ -7,21 +7,66 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
 
+/**
+ * The LoginPage class represents the login panel of the Lancaster's Restaurant Management GUI.
+ * It allows users to input their username and password to access the system.
+ * The class implements ActionListener, FocusListener, DocumentListener, and KeyListener interfaces
+ * to handle user interactions and events.
+ */
 public class LoginPage extends MyPanel implements ActionListener, FocusListener, DocumentListener, KeyListener {
+    /**
+     * The main application instance.
+     */
     private final Main main;
+
+    /**
+     * The echo character used for masking password input.
+     */
     private final char echoChar;
+
+    /**
+     * The main JPanel associated with the login panel.
+     */
     private JPanel mainPanel;
+
+    /**
+     * The text field for entering the username.
+     */
     private JTextField usernameField;
+
+    /**
+     * The password field for entering the password.
+     */
     private JPasswordField passwordField;
+
+    /**
+     * The button to clear the username and password fields.
+     */
     private JButton clearButton;
+
+    /**
+     * The button to sign in to the system.
+     */
     private JButton signInButton;
+
+    /**
+     * The label to display error messages.
+     */
     private JLabel errorLabel;
+
+    /**
+     * The label to display powered by information.
+     */
     private JLabel poweredByLabel;
 
+    /**
+     * Constructs a new LoginPage object with the specified main application instance.
+     *
+     * @param m the main application instance
+     */
     public LoginPage(Main m) {
         main = m;
         echoChar = passwordField.getEchoChar();
-//        usernameField.setFont(new Font("Fira Code", Font.BOLD, 20));
         passwordField.setEchoChar((char) 0);
         errorLabel.setText(" ");
         main.addLabelIcon(poweredByLabel, "team-icon.png", -1, 30);
@@ -116,6 +161,11 @@ public class LoginPage extends MyPanel implements ActionListener, FocusListener,
     @Override
     public void keyReleased(KeyEvent e) {}
 
+    /**
+     * Updates the state of the clear and sign-in buttons based on the content of the username and password fields.
+     * Enables the buttons if both fields are not empty and have black foreground color.
+     * Otherwise, disables the buttons.
+     */
     private void updateButtonState() {
         if (!usernameField.getText().isEmpty() && usernameField.getForeground() == Color.BLACK
                 || !passwordField.getText().isEmpty() && passwordField.getForeground() == Color.BLACK) {
@@ -127,6 +177,11 @@ public class LoginPage extends MyPanel implements ActionListener, FocusListener,
         }
     }
 
+    /**
+     * Handles the sign-in action by validating the username and password entered by the user.
+     * If the username is "Linda" and the password is "[p, a, s, s]", switches to the main interface panel.
+     * Otherwise, displays an error message indicating incorrect username or password.
+     */
     private void signIn() {
         String username = usernameField.getText();
         String password = Arrays.toString(passwordField.getPassword());

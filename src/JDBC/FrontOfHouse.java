@@ -4,11 +4,19 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// NB: to run methods in this class, instantiate it in a main method and simply call the functions.
-
+/**
+ * Represents the front of house operations.
+ */
 public class FrontOfHouse implements IFrontOfHouse {
+    /**
+     * Represents a connection to the database.
+     */
     private final Connection connection;
 
+    /**
+     * Constructs a new FrontOfHouse instance with the given database connection.
+     * @param connection The database connection.
+     */
     public FrontOfHouse(Connection connection) {
         this.connection = connection;
     }
@@ -97,7 +105,12 @@ public class FrontOfHouse implements IFrontOfHouse {
         return winePairings;
     }
 
-    // helper to run the count SQL queries
+    /**
+     * Helper method to execute count SQL queries.
+     *
+     * @param query The SQL query to be executed.
+     * @return The result of the count query.
+     */
     private int executeCountQuery(String query) {
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
@@ -105,12 +118,17 @@ public class FrontOfHouse implements IFrontOfHouse {
                 return resultSet.getInt(1);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return 0;
     }
 
-    // helper to run sum SQL queries
+    /**
+     * Helper method to execute sum SQL queries.
+     *
+     * @param query The SQL query to be executed.
+     * @return The result of the sum query.
+     */
     private int executeSumQuery(String query) {
         try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
@@ -118,12 +136,18 @@ public class FrontOfHouse implements IFrontOfHouse {
                 return resultSet.getInt(1);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return 0;
     }
 
-    // same, but for averages
+    /**
+     * Helper method to execute average SQL queries.
+     *
+     * @param query     The SQL query to be executed.
+     * @param parameter The parameter for the prepared statement.
+     * @return The result of the average query.
+     */
     private int executeAverageQuery(String query, String parameter) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, parameter);
@@ -133,7 +157,7 @@ public class FrontOfHouse implements IFrontOfHouse {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return 0; // return 0 if no result or error occurs
     }

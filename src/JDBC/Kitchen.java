@@ -7,9 +7,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the kitchen functionalities.
+ */
 public class Kitchen implements IKitchen {
+    /**
+     * Represents a connection to the database.
+     */
     private final Connection connection;
 
+    /**
+     * Constructs a Kitchen object with the specified database connection.
+     *
+     * @param connection The database connection.
+     */
     public Kitchen(Connection connection) {
         this.connection = connection;
     }
@@ -30,13 +41,6 @@ public class Kitchen implements IKitchen {
                 Ingredient ingredient = new Ingredient(ingredientId, ingredientName, quantity);
                 ingredients.add(ingredient);
             }
-
-//            if (resultSet.next()) {
-//                HashMap<Ingredient, Integer> ingredientAmounts = new HashMap<>();
-//
-//                String deliveryDetails = "Delivery!";
-//                deliveryOrder = new Order(ingredientAmounts, deliveryDetails);
-//            }
 
             resultSet.close();
             statement.close();

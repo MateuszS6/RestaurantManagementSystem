@@ -50,5 +50,10 @@ public interface IFrontOfHouse {
      */
     void sendLimitEmail(Email email);
 
+    /**
+     * Retrieves the list of wine pairings available.
+     *
+     * @return The list of wine pairings, each represented by a WinePairing object.
+     */
     List<WinePairing> getWinePairings();
 }

@@ -1,5 +1,5 @@
 # Restaurant Management System
-Welcome to the GitHub repository for our Restaurant Management System. This application is designed to manage restaurant operations including details, menus, and sales analytics. It was developed as part of the IN2033 Team Project Coursework at City, University of London.
+Welcome to the GitHub repository for me and my team's Restaurant Management System. This application is designed to manage restaurant operations including details, menus, and sales analytics. It was developed as part of the IN2033 Team Project Coursework at City, University of London.
 
 ## Project Overview
 This Restaurant Management System offers a comprehensive suite of tools to efficiently handle various aspects of restaurant management. It provides functionalities for:

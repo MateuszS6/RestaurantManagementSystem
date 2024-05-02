@@ -5,7 +5,26 @@ Welcome to the GitHub repository for me and my team's Restaurant Management Syst
 This Restaurant Management System offers a comprehensive suite of tools to efficiently handle various aspects of restaurant management. It provides functionalities for:
 - Displaying restaurant details and staff information.
 - Managing and updating menu items.
-- Analyzing sales data through dynamic charts.
+- Analysing sales data through dynamic charts.
+
+## GUI Screenshots
+Explore the user-friendly interface of our Restaurant Management System through these key screenshots:
+
+### Login Page
+![gui-login-page](https://github.com/MateuszS6/RestaurantManagement/assets/124052017/3c8ce41c-1c0c-4ece-ab2e-867fc1f86dbb)
+The login page is designed for simplicity and security, ensuring easy access for authorized users.
+
+### Restaurant Management
+![Restaurant Management Page]()
+This specialized interface allows for comprehensive management of restaurant tables, facilitating easy adjustments to table arrangements, reservations, and availability.
+
+### Menu Management
+![Menu Management Page]()
+This feature allows restaurant staff to update and manage menu items efficiently, from adding new dishes to adjusting prices and descriptions.
+
+### Sales Analytics
+![Sales Analytics Page]()
+The sales analytics interface offers detailed insights into restaurant performance with customizable charts and graphs for revenue tracking and forecasting.
 
 ## Learning Outcomes
 Through this project, we have demonstrated the ability to:

@@ -11,20 +11,20 @@ This Restaurant Management System offers a comprehensive suite of tools to effic
 Explore the user-friendly interface of our Restaurant Management System through these key screenshots:
 
 ### Login Page
-![gui-login-page](assets/gui-login-page.png)
-The login page is designed for simplicity and security, ensuring easy access for authorized users.
+![gui-login-page](images/gui-login-page.png)
+The login page is designed for simplicity and security, ensuring easy access for authorised users.
 
 ### Restaurant Management
-![gui-restaurant-page](assets/gui-restaurant-page.png)
-This specialized interface allows for comprehensive management of restaurant tables, facilitating easy adjustments to table arrangements, reservations, and availability.
+![gui-restaurant-page](images/gui-restaurant-page.png)
+This specialised interface allows for comprehensive management of restaurant tables, facilitating easy adjustments to table arrangements, reservations, and availability.
 
 ### Menu Management
-![gui-menu-page](assets/gui-menu-page.png)
+![gui-menu-page](images/gui-menu-page.png)
 This feature allows restaurant staff to update and manage menu items efficiently, from adding new dishes to adjusting prices and descriptions.
 
 ### Sales Analytics
-![gui-sales-page](assets/gui-sales-page.png)
-The sales analytics interface offers detailed insights into restaurant performance with customizable charts and graphs for revenue tracking and forecasting.
+![gui-sales-page](images/gui-sales-page.png)
+The sales analytics interface offers detailed insights into restaurant performance with customisable charts and graphs for revenue tracking and forecasting.
 
 ## Learning Outcomes
 Through this project, we have demonstrated the ability to:

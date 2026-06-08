@@ -32,16 +32,23 @@ This feature allows restaurant staff to update and manage menu items efficiently
 ![gui-sales-page](images/gui-sales-page.png)
 The sales analytics interface offers detailed insights into restaurant performance with customisable charts and graphs for revenue tracking and forecasting.
 
+## Features
+- Restaurant Details: View and manage information about the restaurant’s location, staff, and operational hours.
+- Menu Management: Add, edit, and remove menu items with ease using a user-friendly interface.
+- Sales Analytics: Generate and view sales charts that offer insights into restaurant performance, including daily sales and monthly comparisons.
+
+## Tech Stack
+
+![Java](https://img.shields.io/badge/Java-orange?style=for-the-badge&logo=coffeescript)
+![Java Swing](https://img.shields.io/badge/Java_Swing-orange?style=for-the-badge&logo=coffeescript)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![UML](https://img.shields.io/badge/UML-FABD14?style=for-the-badge&logo=uml&logoColor=black)
+
 ## Learning Outcomes
 Through this project, we have demonstrated the ability to:
 - Integrate advanced object-oriented programming techniques, including the use of interfaces, abstract classes, and packages, to structure a scalable application.
 - Manipulate Java Swing to create intuitive and visually appealing menu pages for a better user experience.
 - Apply JDBC for robust database connectivity, enabling seamless data transactions between the Java application and the SQL database.
-
-## Features
-- Restaurant Details: View and manage information about the restaurant’s location, staff, and operational hours.
-- Menu Management: Add, edit, and remove menu items with ease using a user-friendly interface.
-- Sales Analytics: Generate and view sales charts that offer insights into restaurant performance, including daily sales and monthly comparisons.
 
 > [!NOTE]
 > To ensure full functionality, this system requires a secure VPN connection to @cityteaching.
